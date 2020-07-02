@@ -17,3 +17,19 @@ Route::get('/dashboard', function () {
 Route::get('/detail', function () {
     return view('user.detail.index');
 });
+
+Route::get('/page', function () {
+    return view('user.page.index');
+});
+
+Route::get('/product/create', function () {
+    return view('admin.product.create');
+});
+
+Route::get('/blog/create', function () {
+    return view('admin.blog.create');
+});
+
+Route::get('/page/create', function () {
+    return view('admin.page.create');
+});
