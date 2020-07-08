@@ -26,6 +26,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('stisla/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('stisla/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('stisla/css/custom.css') }}">
 </head>
 
 <body>
@@ -43,7 +44,7 @@
 
             <footer class="main-footer">
                 <div class="footer-left">
-                    Copyright &copy; {{date('Y')}} <div class="bullet"></div> <a href="{{config('app.url')}}">propertira.com</a>
+                    Copyright &copy; {{date('Y')}}
                 </div>
                 <div class="footer-right">Ira Property Syariah</div>
             </footer>
@@ -67,5 +68,9 @@
     <!-- Template JS File -->
     <script src="{{ asset('stisla/js/scripts.js') }}"></script>
     <script src="{{ asset('stisla/js/custom.js') }}"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @yield('js')
+    
 </body>
 </html>

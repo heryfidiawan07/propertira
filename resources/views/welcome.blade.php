@@ -20,16 +20,16 @@
                     <hr>
 
                     <h5 class="text-muted">AREA</h5>
-                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt"></i> Jakarta</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt"></i> Bandung</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt"></i> Bekasi</a></p>
+                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> Jakarta</a></p>
+                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> Bandung</a></p>
+                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> Bekasi</a></p>
 
                     <hr>
 
                     <h5 class="text-muted">KATEGORI</h5>
-                    <p><a href="#" class="text-muted"><i class="fas fa-tag"></i> Rumah Bekas</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-tag"></i> Cluster</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-tag"></i> Proyek Baru</a></p>
+                    <p><a href="#" class="text-muted"><i class="fas fa-tag text-info"></i> Rumah Bekas</a></p>
+                    <p><a href="#" class="text-muted"><i class="fas fa-tag text-info"></i> Cluster</a></p>
+                    <p><a href="#" class="text-muted"><i class="fas fa-tag text-info"></i> Proyek Baru</a></p>
                 </div>
                 <div class="col-md-10">
                     
@@ -57,7 +57,10 @@
                                             <div class="d-block">
                                                 <button class="btn btn-info btn-sm"><i class="fas fa-info"></i> Lihat Info</button>
                                                 <button class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</button>
-                                                <a href="" class="text-danger float-right mt-2 mr-2"><i class="fas fa-tags"></i> Promo</a>
+                                                <div class="d-inline float-right mr-2 mt-2">
+                                                    <a href="#" class="text-muted"><i class="fas fa-fire text-danger"></i> DP 0%</a>
+                                                    <a href="#" class="text-muted"><i class="fas fa-tag"></i> Cluster</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -83,7 +86,10 @@
                                             <div class="d-block">
                                                 <button class="btn btn-info btn-sm"><i class="fas fa-info"></i> Lihat Info</button>
                                                 <button class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</button>
-                                                <a href="" class="text-danger float-right mt-2 mr-2"><i class="fas fa-tags"></i> Promo</a>
+                                                <div class="d-inline float-right mr-2 mt-2">
+                                                    <a href="#" class="text-muted"><i class="fas fa-fire text-danger"></i> DP 0%</a>
+                                                    <a href="#" class="text-muted"><i class="fas fa-tag"></i> Cluster</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

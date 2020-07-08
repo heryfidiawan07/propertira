@@ -9,19 +9,19 @@
             <div class="row">
                 <div class="col-md-8">
                     
-                    <div id="carouselExampleIndicators2" class="carousel slide text-center bg-secondary" data-ride="carousel">
+                    <div id="carouselExampleIndicators2" class="carousel slide text-center bg-light" data-ride="carousel" style="height: 40vh;">
                         <div class="carousel-inner">
                             <div class="carousel-item">
-                                <img src="https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/f36d6ef7fec519.jpg" class="img-fluid">
+                                <img src="https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/f36d6ef7fec519.jpg" class="img-fluid" style="height: 40vh;">
                             </div>
                             <div class="carousel-item active">
-                                <img src="https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/f36d6ef7fec519.jpg" class="img-fluid">
+                                <img src="https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/f36d6ef7fec519.jpg" class="img-fluid" style="height: 40vh;">
                             </div>
                         </div>
                     </div>
                     {{-- End Carousel --}}
 
-                    <div class="card p-3 mt-3">
+                    <div class="card p-3 mb-2">
                         <h5 class="text-success">Rp 100.000.000</h5>
                         <div class="d-block text-info">
                             <i class="fas fa-map-marker-alt"></i>
@@ -29,14 +29,14 @@
                         </div>
                     </div>
 
-                    <div class="card p-3">
+                    <div class="card p-3 mb-2">
                         <div class="d-inline">
                             <a href="#" class="text-muted"><i class="fas fa-fire text-danger"></i> DP 0%</a>
                             <a href="#" class="text-muted"><i class="fas fa-tag"></i> Cluster</a>
                         </div>
                     </div>
 
-                    <div class="card p-3">
+                    <div class="card p-3 mb-2">
                         <p>DETAILS</p>
                         <table class="table table-hover">
                             <tr>
@@ -86,16 +86,16 @@
                     <hr>
 
                     <h5 class="text-muted">AREA</h5>
-                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt"></i> Jakarta</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt"></i> Bandung</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt"></i> Bekasi</a></p>
+                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> Jakarta</a></p>
+                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> Bandung</a></p>
+                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> Bekasi</a></p>
 
                     <hr>
 
                     <h5 class="text-muted">KATEGORI</h5>
-                    <p><a href="#" class="text-muted"><i class="fas fa-tag"></i> Rumah Bekas</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-tag"></i> Cluster</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-tag"></i> Proyek Baru</a></p>
+                    <p><a href="#" class="text-muted"><i class="fas fa-tag text-info"></i> Rumah Bekas</a></p>
+                    <p><a href="#" class="text-muted"><i class="fas fa-tag text-info"></i> Cluster</a></p>
+                    <p><a href="#" class="text-muted"><i class="fas fa-tag text-info"></i> Proyek Baru</a></p>
 
                 </div>
             </div>

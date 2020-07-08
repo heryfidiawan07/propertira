@@ -8,33 +8,21 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="dashboard-general.html">General Dashboard</a></li>
-                    <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
-                </ul>
+            <li class="@if(Request::segment(1) == 'dashboard') active @endif">
+                <a class="nav-link" href="#"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
             </li>
-            <li class="menu-header">Starter</li>
-            <li class="dropdown active">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
+            <li class="menu-header">Setting</li>
+            <li class="dropdown @if(Request::segment(2) == 'user' || Request::segment(2) == 'role') active @endif">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-users-cog"></i> <span>Administrator</span></a>
                 <ul class="dropdown-menu">
-                    <li class=active><a class="nav-link" href="layout-default.html">Default Layout</a></li>
-                    <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
-                </ul>
-            </li>
-            <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="bootstrap-alert.html">Alert</a></li>
+                    <li class="@if(Request::segment(2) == 'user') active @endif">
+                        <a class="nav-link" href="{{route('admin.user.index')}}"><i class="fas fa-user-tie"></i> User</a>
+                    </li>
+                    <li class="@if(Request::segment(2) == 'role') active @endif">
+                        <a class="nav-link" href=""><i class="fas fa-user-cog"></i> Role</a>
+                    </li>
                 </ul>
             </li>
         </ul>
-        <div class="p-3 mt-4 mb-4 hide-sidebar-mini">
-            <a href="documentation.html" class="btn btn-primary btn-lg btn-icon-split btn-block">
-                <i class="far fa-question-circle"></i> <div>Documentation</div>
-            </a>
-        </div>
     </aside>
 </div>

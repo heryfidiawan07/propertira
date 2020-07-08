@@ -6,3 +6,50 @@
  */
 
 /*# sourceMappingURL=custom.css.map */
+
+::-webkit-input-placeholder { /* Edge */
+  font-style: italic !important;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  font-style: italic !important;
+}
+
+::placeholder {
+  font-style: italic !important;
+}
+
+.swal-button {
+    font-size: 12px !important;
+	padding-left: 25px !important;
+	padding-right: 25px !important;
+	padding-top: 8px !important;
+	padding-bottom: 8px !important;
+}
+
+.parent-color {
+	color: forestgreen;
+}
+
+.parent-background {
+	background: forestgreen;
+}
+
+.text-12 {
+	font-size: 12px !important;
+}
+.text-14 {
+	font-size: 14px !important;
+}
+
+.text-16 {
+	font-size: 16px !important;
+}
+
+.text-18 {
+	font-size: 18px !important;
+}
+
+.text-20 {
+	font-size: 20px !important;
+}

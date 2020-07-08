@@ -22,6 +22,9 @@ Route::get('/page', function () {
     return view('user.page.index');
 });
 
+
+// ADMIN
+
 Route::get('/product/create', function () {
     return view('admin.product.create');
 });
@@ -33,3 +36,6 @@ Route::get('/blog/create', function () {
 Route::get('/page/create', function () {
     return view('admin.page.create');
 });
+
+
+Route::get('admin/user', 'UserCOntroller@index')->name('admin.user.index');
