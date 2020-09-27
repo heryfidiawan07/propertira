@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="{{ asset('stisla/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('stisla/css/components.css') }}">
     <link rel="stylesheet" href="{{ asset('stisla/css/custom.css') }}">
+
+    @stack('css')
+    
 </head>
 
 <body>
@@ -70,7 +73,8 @@
     <script src="{{ asset('stisla/js/custom.js') }}"></script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    @yield('js')
+    
+    @stack('js')
     
 </body>
 </html>

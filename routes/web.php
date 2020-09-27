@@ -26,11 +26,13 @@ Route::get('/page', function () {
 // ADMIN
 
 Route::get('/product/create', function () {
-    return view('admin.product.create');
+	$edit = false;
+    return view('admin.product.form', compact('edit'));
 });
 
 Route::get('/blog/create', function () {
-    return view('admin.blog.create');
+	$edit = false;
+    return view('admin.blog.form', compact('edit'));
 });
 
 Route::get('/page/create', function () {
