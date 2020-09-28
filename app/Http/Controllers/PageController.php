@@ -13,7 +13,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -23,7 +23,8 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        $edit = false;
+        return view('admin.page.form', compact('edit'));
     }
 
     /**
@@ -43,9 +44,9 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($slug)
+    {   
+        return view('user.page.show', compact('slug'));
     }
 
     /**

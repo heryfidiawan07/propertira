@@ -2,15 +2,15 @@
 
 @push('css')
 {{-- <link rel="stylesheet" href="{{ asset('stisla/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
-<link rel="stylesheet" href="{{ asset('stisla/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
-<link rel="stylesheet" href="{{ asset('stisla/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}"> --}}
+<link rel="stylesheet" href="{{ asset('stisla/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}"> --}}
+<link rel="stylesheet" href="{{ asset('stisla/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 <link rel="stylesheet" href="{{ asset('dropify/dist/css/dropify.min.css') }}">
 @endpush
 
 @section('content')
 <section class="section">
     
-    <div class="section-body mt-5">
+    <div class="section-body mt-3">
         <div class="row">
             <div class="col-md-10">
                 <div class="card">
@@ -37,12 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="d-block">Tags</label>
-                                @for($i=0; $i<5; $i++)
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="tag_{{$i}}" value="">
-                                        <label class="form-check-label" for="tag_{{$i}}">Tag {{$i}}</label>
-                                    </div>
-                                @endfor
+                                <input type="text" name="tag" class="form-control" value="@if($edit){{$news->tag}}@else{{old('tag')}}@endif" data-role="tagsinput" style="width:100%;">
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-sm px-3" value="Save">
@@ -61,8 +56,8 @@
 
 @push('js')
 {{-- <script src="{{ asset('stisla/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-<script src="{{ asset('stisla/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
-<script src="{{ asset('stisla/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script> --}}
+<script src="{{ asset('stisla/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script> --}}
+<script src="{{ asset('stisla/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 <script src="{{ asset('dropify/dist/js/dropify.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.4.2/tinymce.min.js"></script>
 <script>

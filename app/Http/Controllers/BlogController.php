@@ -23,7 +23,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        $edit = false;
+        return view('admin.blog.form', compact('edit'));
     }
 
     /**
@@ -45,7 +46,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('user.blog.show');
     }
 
     /**

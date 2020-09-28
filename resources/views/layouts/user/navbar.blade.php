@@ -1,18 +1,21 @@
-<div class="navbar-bg"></div>
+<div class="navbar-bg" style="height: 75px;"></div>
     <nav class="navbar navbar-expand-lg main-navbar">
-        <a href="index.html" class="navbar-brand sidebar-gone-hide">{{config('app.name')}}</a>
-        <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
+        {{-- <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a> --}}
+        
         <div class="nav-collapse">
             <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
                 <i class="fas fa-ellipsis-v"></i>
             </a>
             <ul class="navbar-nav">
-                <li class="nav-item active"><a href="#" class="nav-link">Application</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Report Something</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Server Status</a></li>
+                <li class="nav-item active"><a href="#" class="nav-link">Page 1</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Page 2</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Page 3</a></li>
             </ul>
         </div>
-        <form class="form-inline ml-auto">
+
+        <a href="index.html" class="navbar-brand ml-auto">{{config('app.name')}}</a>
+
+        {{-- <form class="form-inline ml-auto">
             <ul class="navbar-nav">
                 <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
             </ul>
@@ -39,47 +42,11 @@
                     <div class="search-header">
                         Result
                     </div>
-                    <div class="search-item">
-                        <a href="#">
-                            <img class="mr-3 rounded" width="30" src="{{ asset('stisla/img/products/product-3-50.png') }}" alt="product">
-                            oPhone S9 Limited Edition
-                        </a>
-                    </div>
-                    <div class="search-item">
-                        <a href="#">
-                            <img class="mr-3 rounded" width="30" src="{{ asset('stisla/img/products/product-2-50.png') }}" alt="product">
-                            Drone X2 New Gen-7
-                        </a>
-                    </div>
-                    <div class="search-item">
-                        <a href="#">
-                            <img class="mr-3 rounded" width="30" src="{{ asset('stisla/img/products/product-1-50.png') }}" alt="product">
-                            Headphone Blitz
-                        </a>
-                    </div>
-                    <div class="search-header">
-                        Projects
-                    </div>
-                    <div class="search-item">
-                        <a href="#">
-                            <div class="search-icon bg-danger text-white mr-3">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            Stisla Admin Template
-                        </a>
-                    </div>
-                    <div class="search-item">
-                        <a href="#">
-                            <div class="search-icon bg-primary text-white mr-3">
-                                <i class="fas fa-laptop"></i>
-                            </div>
-                            Create a new Homepage Design
-                        </a>
-                    </div>
                 </div>
             </div>
-        </form>
-        <ul class="navbar-nav navbar-right">
+        </form> --}}
+
+        {{-- <ul class="navbar-nav navbar-right ml-auto">
             <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Messages
@@ -107,37 +74,6 @@
                             <b>Dedik Sugiharto</b>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
                             <div class="time">12 Hours Ago</div>
-                        </div>
-                    </a>
-                    <a href="#" class="dropdown-item dropdown-item-unread">
-                        <div class="dropdown-item-avatar">
-                            <img alt="image" src="{{ asset('stisla/img/avatar/avatar-3.png') }}" class="rounded-circle">
-                            <div class="is-online"></div>
-                        </div>
-                        <div class="dropdown-item-desc">
-                            <b>Agung Ardiansyah</b>
-                            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <div class="time">12 Hours Ago</div>
-                        </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <div class="dropdown-item-avatar">
-                            <img alt="image" src="{{ asset('stisla/img/avatar/avatar-4.png') }}" class="rounded-circle">
-                        </div>
-                        <div class="dropdown-item-desc">
-                            <b>Ardian Rahardiansyah</b>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit ess</p>
-                            <div class="time">16 Hours Ago</div>
-                        </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <div class="dropdown-item-avatar">
-                            <img alt="image" src="{{ asset('stisla/img/avatar/avatar-5.png') }}" class="rounded-circle">
-                        </div>
-                        <div class="dropdown-item-desc">
-                            <b>Alfa Zulkarnain</b>
-                            <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                            <div class="time">Yesterday</div>
                         </div>
                     </a>
                 </div>
@@ -225,5 +161,5 @@
             </a>
         </div>
     </li>
-</ul>
+</ul> --}}
 </nav>

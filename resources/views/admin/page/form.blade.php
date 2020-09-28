@@ -1,13 +1,5 @@
 @extends('layouts.admin.app')
 
-@push('css')
-{{-- <link rel="stylesheet" href="{{ asset('stisla/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
-<link rel="stylesheet" href="{{ asset('stisla/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
-<link rel="stylesheet" href="{{ asset('stisla/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}"> --}}
-<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link type="text/css" rel="stylesheet" href="{{ asset('multiple-upload/dist/image-uploader.min.css') }}">
-@endpush
-
 @section('content')
 <section class="section">
     
@@ -16,7 +8,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-body">
-                        <h5>CREATE PRODUCT</h5>
+                        <h5>CREATE PAGE</h5>
                         <form method="POST" action="" enctype="multipart/form-data">
                             @if($edit) @method('PUT') @endif
                             @csrf
@@ -29,39 +21,8 @@
                                 <textarea name="preview" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Image</label>
-                                <div class="input-images"></div>
-                            </div>
-                            <div class="form-group">
                                 <label>Description</label>
                                 <textarea class="form-control description" style="min-height: 300px;"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label class="d-block">Promo</label>
-                                @for($i=0; $i<5; $i++)
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="promo_{{$i}}" value="">
-                                        <label class="form-check-label" for="promo_{{$i}}">Promo {{$i}}</label>
-                                    </div>
-                                @endfor
-                            </div>
-                            <div class="form-group">
-                                <label class="d-block">Area</label>
-                                @for($i=0; $i<5; $i++)
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="area_{{$i}}" value="">
-                                        <label class="form-check-label" for="area_{{$i}}">Area {{$i}}</label>
-                                    </div>
-                                @endfor
-                            </div>
-                            <div class="form-group">
-                                <label class="d-block">Category</label>
-                                @for($i=0; $i<5; $i++)
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="category_{{$i}}" value="">
-                                        <label class="form-check-label" for="category_{{$i}}">Category {{$i}}</label>
-                                    </div>
-                                @endfor
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-sm px-3" value="Save">
@@ -79,11 +40,6 @@
 @endsection
 
 @push('js')
-{{-- <script src="{{ asset('stisla/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-<script src="{{ asset('stisla/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
-<script src="{{ asset('stisla/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script> --}}
-{{-- <script src="{{ asset('dropify/dist/js/dropify.min.js') }}"></script> --}}
-<script type="text/javascript" src="{{ asset('multiple-upload/dist/image-uploader.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.4.2/tinymce.min.js"></script>
 <script>
 var editor_config = {
@@ -111,7 +67,5 @@ var editor_config = {
     content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
 };
 tinymce.init(editor_config);
-
-$('.input-images').imageUploader();
 </script>
 @endpush

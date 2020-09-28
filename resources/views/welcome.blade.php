@@ -68,9 +68,8 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body pl-0">
-                                    <h5 class="text-warning">Pondok Indah Gempol 1 
-                                        <span class="float-right"><i class="fas fa-thumbtack"></i></span>
-                                    </h5>
+                                    <h5 class="text-warning">SURVEY SERENTAK</h5>
+                                    <span id="getting-started" class="text-danger d-block font-weight-bold" style="position: absolute; top: 20px; right: 30px;"></span>
                                     <div class="d-block text-info">
                                         <i class="fas fa-map-marker-alt"></i>
                                         Jl Raya Serang Setu
@@ -91,26 +90,27 @@
                         </div>
                     </div>
 
-                    @for ($i = 0; $i < 5; $i++)
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <img src="https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/06e4e70ce93d47.jpg" class="img-fluid w-100">
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="card-body pl-0">
+                    <div class="row">
+                        @for ($i = 0; $i < 3; $i++)
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header p-0">
+                                        <span style="position: absolute; z-index: 2; top: -5px; right: 5px;">
+                                            <i class="fas fa-bookmark" style="font-size: 30px; color: red;"></i>
+                                        </span>
+                                        <img src="https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/06e4e70ce93d47.jpg" class="img-fluid w-100" style="z-index: 1;">
+                                    </div>
+                                    <div class="card-body p-2">
                                         <h5 class="text-success">Pondok Indah Gempol {{$i}} </h5>
+                                        <h5 class="text-primary">Rp 100.000.000</h5>
                                         <div class="d-block text-info">
                                             <i class="fas fa-map-marker-alt"></i>
                                             Jl Raya Serang Setu
                                         </div>
-                                        <div class="frame-text-1">
+                                        <div class="frame-text-1 mb-1" style="height: 6em; overflow-y: hidden;">
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat....
+                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....
                                         </div>
-                                        <h5 class="text-primary">Rp 100.000.000</h5>
                                         <div class="d-block">
                                             <button class="btn btn-info btn-sm"><i class="fas fa-info"></i> Lihat Info</button>
                                             <button class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</button>
@@ -118,30 +118,29 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endfor
+                        @endfor
+                    </div>
 
                 </div>
                 <div class="col-lg-2">
-                    <h5 class="text-muted">PROMO</h5>
-                    <p><a href="#" class="text-muted"><i class="fas fa-fire text-danger"></i> Siap Huni</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-fire text-danger"></i> DP 0%</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-fire text-danger"></i> Cashback</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-fire text-danger"></i> Bonus</a></p>
+
+                    @include('partials.search-sidebar')
 
                     <hr>
 
-                    <h5 class="text-muted">AREA</h5>
-                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> Jakarta</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> Bandung</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> Bekasi</a></p>
+                    @include('partials.option-sidebar')
 
-                    <hr>
+                </div>
+            </div>
 
-                    <h5 class="text-muted">KATEGORI</h5>
-                    <p><a href="#" class="text-muted"><i class="fas fa-tag text-info"></i> Rumah Bekas</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-tag text-info"></i> Cluster</a></p>
-                    <p><a href="#" class="text-muted"><i class="fas fa-tag text-info"></i> Proyek Baru</a></p>
+            <div class="row">
+                <div class="col-md-8">
+                    @for ($i = 0; $i < 3; $i++)
+                        @include('partials.product-index')
+                    @endfor
+                </div>
+                <div class="col-md-4">
+                    @include('partials.blog-sidebar')
                 </div>
             </div>
         </div>
@@ -150,3 +149,13 @@
     </section>
 </div>
 @endsection
+
+@push('js')
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
+<script type="text/javascript">
+  $('#getting-started').countdown('2020/09/30 17:00:00', function(event) {
+    // $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
+    $(this).html(event.strftime('%d Hari %H:%M:%S'));
+  });
+</script>
+@endpush

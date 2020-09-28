@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.product.index');
     }
 
     /**
@@ -23,7 +23,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $edit = false;
+        return view('admin.product.form', compact('edit'));
     }
 
     /**
@@ -45,7 +46,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('user.product.show');
     }
 
     /**

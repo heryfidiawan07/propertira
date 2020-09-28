@@ -5,39 +5,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('page/{slug}', 'PageController@show')->name('page.show');
+Route::get('product/detail/{slug}', 'ProductController@show')->name('product.show');
+Route::get('product/{filter}', 'VisitorController@show')->name('visitor.show');
+Route::get('blog/{slug}', 'BlogController@show')->name('blog.show');
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-});
-
-Route::get('/detail', function () {
-    return view('user.detail.index');
-});
-
-Route::get('/page', function () {
-    return view('user.page.index');
-});
-
+// Route::get('home', 'HomeController@index')->name('home');
 
 // ADMIN
 
-Route::get('/product/create', function () {
-	$edit = false;
-    return view('admin.product.form', compact('edit'));
+Route::prefix('admin')->group(function () {
+	Route::resource('dashboard', DashboardController::class);
+    Route::resource('page', PageController::class);
+    Route::resource('product', ProductController::class);
+    Route::resource('blog', BlogController::class);
 });
 
-Route::get('/blog/create', function () {
-	$edit = false;
-    return view('admin.blog.form', compact('edit'));
-});
-
-Route::get('/page/create', function () {
-    return view('admin.page.create');
-});
-
-
-Route::get('admin/user', 'UserCOntroller@index')->name('admin.user.index');
