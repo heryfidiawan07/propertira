@@ -1,4 +1,4 @@
-<div class="navbar-bg" style="height: 75px;"></div>
+<div class="navbar-bg" style="height: 70px;"></div>
     <nav class="navbar navbar-expand-lg main-navbar">
         {{-- <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a> --}}
         
@@ -7,13 +7,19 @@
                 <i class="fas fa-ellipsis-v"></i>
             </a>
             <ul class="navbar-nav">
-                <li class="nav-item active"><a href="#" class="nav-link">Page 1</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Page 2</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Page 3</a></li>
+                <li class="nav-item @if(Request::segment(2) == 'slug') active @endif">
+                    <a href="{{route('page.show', ['page' => 'slug'])}}" class="nav-link">Page 1</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('page.show', ['page' => 'asdfghjkl'])}}" class="nav-link">Page 2</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('page.show', ['page' => 'asdfghjkl'])}}" class="nav-link">Page 3</a>
+                </li>
             </ul>
         </div>
 
-        <a href="index.html" class="navbar-brand ml-auto">{{config('app.name')}}</a>
+        <a href="{{route('visitor.welcome')}}" class="navbar-brand ml-auto">{{config('app.name')}}</a>
 
         {{-- <form class="form-inline ml-auto">
             <ul class="navbar-nav">

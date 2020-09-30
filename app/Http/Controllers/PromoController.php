@@ -13,7 +13,7 @@ class PromoController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.promo.index');
     }
 
     /**
@@ -45,7 +45,7 @@ class PromoController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('user.product.index');
     }
 
     /**

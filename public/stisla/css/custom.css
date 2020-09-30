@@ -53,3 +53,10 @@
 .text-20 {
 	font-size: 20px !important;
 }
+
+body.layout-3 .main-content {
+	padding-top: 100px !important;
+}
+.main-content {
+	padding-top: 100px !important;
+}

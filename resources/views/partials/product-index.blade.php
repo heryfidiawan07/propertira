@@ -5,7 +5,9 @@
         </div>
         <div class="col-md-7">
             <div class="card-body pl-0">
-                <h5 class="text-success">Pondok Indah Gempol {{$i}} </h5>
+                <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}">
+                    <h5 class="text-success">Pondok Indah Gempol {{$i}} </h5>
+                </a>
                 <div class="d-block text-info">
                     <i class="fas fa-map-marker-alt"></i>
                     Jl Raya Serang Setu
@@ -15,7 +17,9 @@
                 </div>
                 <h5 class="text-primary">Rp 100.000.000</h5>
                 <div class="d-block">
-                    <button class="btn btn-info btn-sm"><i class="fas fa-info"></i> Lihat Info</button>
+                    <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}" class="btn btn-info btn-sm">
+                        <i class="fas fa-info"></i> Lihat Info
+                    </a>
                     <button class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</button>
                 </div>
             </div>

@@ -13,7 +13,7 @@ class AreaController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.area.index');
     }
 
     /**
@@ -45,7 +45,7 @@ class AreaController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('user.product.index');
     }
 
     /**

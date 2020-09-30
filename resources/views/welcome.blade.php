@@ -23,7 +23,9 @@
                                             </div>
                                             <div class="col-md-7">
                                                 <div class="card-body pl-0">
-                                                    <h5 class="text-primary">Pondok Indah Gempol {{$p}}</h5>
+                                                    <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}">
+                                                        <h5 class="text-primary">Pondok Indah Gempol {{$p}}</h5>
+                                                    </a>
                                                     <div class="d-block text-info">
                                                         <i class="fas fa-map-marker-alt"></i>
                                                         Jl Raya Serang Setu
@@ -36,8 +38,12 @@
                                                     </div>
                                                     <h5 class="text-primary">Rp {{$p}}00.000.000</h5>
                                                     <div class="d-block">
-                                                        <button class="btn btn-info btn-sm"><i class="fas fa-info"></i> Lihat Info</button>
-                                                        <button class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</button>
+                                                        <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}" class="btn btn-info btn-sm">
+                                                            <i class="fas fa-info"></i> Lihat Info
+                                                        </a>
+                                                        <button class="btn btn-success btn-sm">
+                                                            <i class="fab fa-whatsapp"></i> Kirim Pesan
+                                                        </button>
                                                         <div class="d-inline float-right mr-2 mt-2">
                                                             <a href="#" class="text-muted"><i class="fas fa-fire text-danger"></i> DP 0%</a>
                                                             <a href="#" class="text-muted"><i class="fas fa-tag"></i> Cluster</a>
@@ -68,7 +74,9 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body pl-0">
-                                    <h5 class="text-warning">SURVEY SERENTAK</h5>
+                                    <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}">
+                                        <h5 class="text-warning">SURVEY SERENTAK</h5>
+                                    </a>
                                     <span id="getting-started" class="text-danger d-block font-weight-bold" style="position: absolute; top: 20px; right: 30px;"></span>
                                     <div class="d-block text-info">
                                         <i class="fas fa-map-marker-alt"></i>
@@ -82,7 +90,9 @@
                                     </div>
                                     <h5 class="text-warning">Rp 100.000.000</h5>
                                     <div class="d-block">
-                                        <button class="btn btn-info btn-sm"><i class="fas fa-info"></i> Lihat Info</button>
+                                        <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}" class="btn btn-info btn-sm">
+                                            <i class="fas fa-info"></i> Lihat Info
+                                        </a>
                                         <button class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</button>
                                     </div>
                                 </div>
@@ -101,7 +111,9 @@
                                         <img src="https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/06e4e70ce93d47.jpg" class="img-fluid w-100" style="z-index: 1;">
                                     </div>
                                     <div class="card-body p-2">
-                                        <h5 class="text-success">Pondok Indah Gempol {{$i}} </h5>
+                                        <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}">
+                                            <h5 class="text-success">Pondok Indah Gempol {{$i}} </h5>
+                                        </a>
                                         <h5 class="text-primary">Rp 100.000.000</h5>
                                         <div class="d-block text-info">
                                             <i class="fas fa-map-marker-alt"></i>
@@ -112,7 +124,9 @@
                                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....
                                         </div>
                                         <div class="d-block">
-                                            <button class="btn btn-info btn-sm"><i class="fas fa-info"></i> Lihat Info</button>
+                                            <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}" class="btn btn-info btn-sm">
+                                                <i class="fas fa-info"></i> Lihat Info
+                                            </a>
                                             <button class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</button>
                                         </div>
                                     </div>
@@ -153,9 +167,10 @@
 @push('js')
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
 <script type="text/javascript">
-  $('#getting-started').countdown('2020/09/30 17:00:00', function(event) {
+let time = '2020-10-01 17:00:00';
+$('#getting-started').countdown(time, function(event) {
     // $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
     $(this).html(event.strftime('%d Hari %H:%M:%S'));
-  });
+});
 </script>
 @endpush
