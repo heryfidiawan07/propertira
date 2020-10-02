@@ -27,11 +27,11 @@
 	padding-bottom: 8px !important;
 }
 
-.parent-color {
+.text-parent {
 	color: forestgreen;
 }
 
-.parent-background {
+.bg-parent {
 	background: forestgreen;
 }
 
@@ -59,4 +59,8 @@ body.layout-3 .main-content {
 }
 .main-content {
 	padding-top: 100px !important;
+}
+
+.section .section-title:before {
+	background-color: forestgreen !important;
 }

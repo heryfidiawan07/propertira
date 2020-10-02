@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     @for ($i = 0; $i < 5; $i++)
-                        @include('partials.product-index')
+                        @include('partials.property-index')
                     @endfor
                 </div>
                 <div class="col-md-4">

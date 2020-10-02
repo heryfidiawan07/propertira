@@ -29,6 +29,10 @@
                                 <textarea name="preview" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
+                                <label>Address</label>
+                                <textarea name="address" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label>Image</label>
                                 <div class="input-images"></div>
                             </div>

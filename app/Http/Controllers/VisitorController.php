@@ -13,7 +13,7 @@ class VisitorController extends Controller
 
     public function search(Request $request) {
         $request = $request->all();
-        return view('user.product.index')->with('request', $request);
+        return view('user.property.index')->with('request', $request);
     }
 
 }

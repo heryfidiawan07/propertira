@@ -23,7 +23,7 @@
                                             </div>
                                             <div class="col-md-7">
                                                 <div class="card-body pl-0">
-                                                    <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}">
+                                                    <a href="{{route('property.show', ['property' => 'zxcvbnm'])}}">
                                                         <h5 class="text-primary">Pondok Indah Gempol {{$p}}</h5>
                                                     </a>
                                                     <div class="d-block text-info">
@@ -38,7 +38,7 @@
                                                     </div>
                                                     <h5 class="text-primary">Rp {{$p}}00.000.000</h5>
                                                     <div class="d-block">
-                                                        <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}" class="btn btn-info btn-sm">
+                                                        <a href="{{route('property.show', ['property' => 'zxcvbnm'])}}" class="btn btn-info btn-sm">
                                                             <i class="fas fa-info"></i> Lihat Info
                                                         </a>
                                                         <button class="btn btn-success btn-sm">
@@ -74,7 +74,7 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body pl-0">
-                                    <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}">
+                                    <a href="{{route('property.show', ['property' => 'zxcvbnm'])}}">
                                         <h5 class="text-warning">SURVEY SERENTAK</h5>
                                     </a>
                                     <span id="getting-started" class="text-danger d-block font-weight-bold" style="position: absolute; top: 20px; right: 30px;"></span>
@@ -90,7 +90,7 @@
                                     </div>
                                     <h5 class="text-warning">Rp 100.000.000</h5>
                                     <div class="d-block">
-                                        <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}" class="btn btn-info btn-sm">
+                                        <a href="{{route('property.show', ['property' => 'zxcvbnm'])}}" class="btn btn-info btn-sm">
                                             <i class="fas fa-info"></i> Lihat Info
                                         </a>
                                         <button class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</button>
@@ -111,7 +111,7 @@
                                         <img src="https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/06e4e70ce93d47.jpg" class="img-fluid w-100" style="z-index: 1;">
                                     </div>
                                     <div class="card-body p-2">
-                                        <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}">
+                                        <a href="{{route('property.show', ['property' => 'zxcvbnm'])}}">
                                             <h5 class="text-success">Pondok Indah Gempol {{$i}} </h5>
                                         </a>
                                         <h5 class="text-primary">Rp 100.000.000</h5>
@@ -124,7 +124,7 @@
                                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....
                                         </div>
                                         <div class="d-block">
-                                            <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}" class="btn btn-info btn-sm">
+                                            <a href="{{route('property.show', ['property' => 'zxcvbnm'])}}" class="btn btn-info btn-sm">
                                                 <i class="fas fa-info"></i> Lihat Info
                                             </a>
                                             <button class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</button>
@@ -150,7 +150,7 @@
             <div class="row">
                 <div class="col-md-8">
                     @for ($i = 0; $i < 3; $i++)
-                        @include('partials.product-index')
+                        @include('partials.property-index')
                     @endfor
                 </div>
                 <div class="col-md-4">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class PropertyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product.index');
+        return view('admin.property.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductController extends Controller
     public function create()
     {
         $edit = false;
-        return view('admin.product.form', compact('edit'));
+        return view('admin.property.form', compact('edit'));
     }
 
     /**
@@ -46,7 +46,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return view('user.product.show');
+        return view('user.property.show');
     }
 
     /**

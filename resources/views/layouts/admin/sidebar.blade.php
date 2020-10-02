@@ -1,10 +1,10 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{route('dashboard.index')}}"><h4 class="mt-4 float-left ml-4 text-success">PROPERTIRA</h4></a>
+            <a href="{{route('dashboard.index')}}"><h4 class="mt-4 float-left ml-4 text-parent">PROPERTIRA</h4></a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{route('dashboard.index')}}" class="text-success">PROP</a>
+            <a href="{{route('dashboard.index')}}" class="text-parent">PROP</a>
         </div>
         <ul class="sidebar-menu">
             {{-- <li class="menu-header">Dashboard</li> --}}
@@ -13,8 +13,8 @@
                 <a class="nav-link" href="{{route('dashboard.index')}}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
             </li>
 
-            <li class="@if(Request::segment(2) == 'product') active @endif">
-                <a class="nav-link" href="{{route('product.index')}}"><i class="fas fa-shopping-bag"></i> <span>Product</span></a>
+            <li class="@if(Request::segment(2) == 'property') active @endif">
+                <a class="nav-link" href="{{route('property.index')}}"><i class="fas fa-shopping-bag"></i> <span>Property</span></a>
             </li>
 
             <li class="@if(Request::segment(2) == 'blog') active @endif">

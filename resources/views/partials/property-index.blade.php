@@ -5,7 +5,7 @@
         </div>
         <div class="col-md-7">
             <div class="card-body pl-0">
-                <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}">
+                <a href="{{route('property.show', ['property' => 'zxcvbnm'])}}">
                     <h5 class="text-success">Pondok Indah Gempol {{$i}} </h5>
                 </a>
                 <div class="d-block text-info">
@@ -17,7 +17,7 @@
                 </div>
                 <h5 class="text-primary">Rp 100.000.000</h5>
                 <div class="d-block">
-                    <a href="{{route('product.show', ['product' => 'zxcvbnm'])}}" class="btn btn-info btn-sm">
+                    <a href="{{route('property.show', ['property' => 'zxcvbnm'])}}" class="btn btn-info btn-sm">
                         <i class="fas fa-info"></i> Lihat Info
                     </a>
                     <button class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</button>

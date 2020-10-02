@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserRolesTable extends Migration
+class CreateAreaProperty extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateUserRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_roles', function (Blueprint $table) {
+        Schema::create('area_property', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('property_id');
+            $table->unsignedBigInteger('area_id');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateUserRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_roles');
+        Schema::dropIfExists('area_property');
     }
 }

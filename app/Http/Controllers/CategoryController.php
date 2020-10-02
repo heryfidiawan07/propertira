@@ -45,7 +45,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return view('user.product.index');
+        return view('user.property.index');
     }
 
     /**

@@ -66,7 +66,30 @@
     <script src="{{ asset('stisla/js/scripts.js') }}"></script>
     <script src="{{ asset('stisla/js/custom.js') }}"></script>
 
+    <script src="{{ asset('mask/dist/jquery.mask.min.js') }}"></script>
+    <script>
+        $('.rupiah').mask("999.999.999.999", {reverse: true});
+    </script>
+
     @stack('js')
+
+    {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LekyM8ZAAAAACiqD3nDKbzwSiaAEDG7rw_vrzVc"></script>
+
+    <script>
+        $('#visitor_message').submit(function(event) {
+            event.preventDefault();
+            $("button").attr('disabled', 'disabled')
+            $("input").attr('readonly', 'readonly')
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LekyM8ZAAAAACiqD3nDKbzwSiaAEDG7rw_vrzVc', {action: 'submit_login'}).then(function(token) {
+                    $('#visitor_message').prepend('<input type="hidden" name="token" value="' + token + '">');
+                    $('#visitor_message').prepend('<input type="hidden" name="action" value="submit_login">');
+                    $('#visitor_message').unbind('submit').submit();
+                });;
+            });
+        });   
+    </script> --}}
 
 </body>
 </html>

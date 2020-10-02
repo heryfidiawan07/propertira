@@ -2,12 +2,13 @@
     <div class="row">
         <div class="col-md-5 my-3">
             <h6 class="mb-3">KIRIM PESAN</h6>
-            <form>
+            <form method="POST" action="" id="visitor_message">
+                @csrf
                 <input type="text" name="name" class="form-control form-control-sm mb-1" placeholder="Name">
                 <input type="text" name="email" class="form-control form-control-sm mb-1" placeholder="Email">
                 <input type="text" name="subject" class="form-control form-control-sm mb-1" placeholder="Subject">
                 <textarea name="message" class="form-control form-control-sm mb-1" placeholder="Message"></textarea>
-                <input type="submit" class="btn parent-background text-white btn-sm pl-3 pr-3" value="Kirim">
+                <input type="submit" class="btn bg-parent text-white btn-sm pl-3 pr-3" value="Kirim">
             </form>
         </div>
         <div class="col-md-3 my-3">

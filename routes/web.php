@@ -1,10 +1,10 @@
 <?php
 
 Route::get('/', 'VisitorController@welcome')->name('visitor.welcome');
-Route::get('product/{search?}', 'VisitorController@search')->name('product.search');
+Route::get('property/{search?}', 'VisitorController@search')->name('property.search');
 
 Route::get('page/{slug}', 'PageController@show')->name('page.show');
-Route::get('product/detail/{slug}', 'ProductController@show')->name('product.show');
+Route::get('property/detail/{slug}', 'PropertyController@show')->name('property.show');
 Route::get('blog/{slug}', 'BlogController@show')->name('blog.show');
 
 // OPTION
@@ -19,7 +19,7 @@ Auth::routes(['register' => false]);
 Route::prefix('admin')->group(function () {
 	Route::resource('dashboard', DashboardController::class);
     Route::resource('page', PageController::class, ['except' => 'show']);
-    Route::resource('product', ProductController::class, ['except' => 'show']);
+    Route::resource('property', PropertyController::class, ['except' => 'show']);
     Route::resource('blog', BlogController::class, ['except' => 'show']);
     Route::resource('promo', PromoController::class, ['except' => 'show']);
     Route::resource('area', AreaController::class, ['except' => 'show']);
