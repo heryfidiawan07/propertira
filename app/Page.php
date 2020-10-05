@@ -10,6 +10,6 @@ class Page extends Model
 	use SoftDeletes;
 	
     protected $fillable = [
-    	'title', 'slug', 'text_preview', 'content', 'view', 'user_id',
+    	'title', 'slug', 'preview', 'content', 'status', 'view', 'user_id',
     ];
 }

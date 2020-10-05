@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="{{ asset('stisla/css/custom.css') }}">
 
     @stack('css')
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     
 </head>
 
@@ -73,8 +77,72 @@
     <script src="{{ asset('stisla/js/custom.js') }}"></script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     
     @stack('js')
+
+    <script src="{{ asset('mask/dist/jquery.mask.min.js') }}"></script>
+    <script>
+        $('.rupiah').mask("999.999.999.999", {reverse: true});
+    </script>
+
+    <script>
+        $(document).on('click', '.btn-delete', function(e) {
+            e.preventDefault();
+            let title = $(this).attr('data-title');
+            let url   = $(this).attr('href');
+            softDelete(title, url);
+        });
+
+        function softDelete(title,url) {
+            Swal.fire({
+                title: 'Are you sure ?',
+                text: "Delete "+title+" ?",
+                icon : 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete!',
+                cancelButtonText: 'Cancel!',
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    return $.ajax({
+                        url : url,
+                        type : "POST",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        data : {
+                            _method : "DELETE",
+                        },
+                        success : function(response){
+                            return response
+                        },
+                        error : function(error){
+                            Swal.fire({
+                                title : error.responseJSON.message,
+                                icon : 'error',
+                            })
+                        }
+                    })
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title : result.value.message,
+                        icon : 'success',
+                    }).then((result) => {
+                        if (typeof table == 'undefined') {
+                            location.reload();
+                        } else {
+                            table.ajax.reload()
+                        }
+                    })
+                }
+            })
+        }
+    </script>
     
 </body>
 </html>

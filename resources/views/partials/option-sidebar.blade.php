@@ -1,19 +1,18 @@
 <h5 class="text-muted">PROMO</h5>
-<p><a href="{{route('promo.show', ['promo' => 'zxcvbnm'])}}" class="text-muted"><i class="fas fa-fire text-danger"></i> Siap Huni</a></p>
-<p><a href="{{route('promo.show', ['promo' => 'zxcvbnm'])}}" class="text-muted"><i class="fas fa-fire text-danger"></i> DP 0%</a></p>
-<p><a href="{{route('promo.show', ['promo' => 'zxcvbnm'])}}" class="text-muted"><i class="fas fa-fire text-danger"></i> Cashback</a></p>
-<p><a href="{{route('promo.show', ['promo' => 'zxcvbnm'])}}" class="text-muted"><i class="fas fa-fire text-danger"></i> Bonus</a></p>
+@foreach($promos as $promo)
+	<p><a href="{{route('promo.show', ['promo' => $promo->slug])}}" class="text-muted"><i class="fas fa-fire text-danger"></i> {{$promo->name}}</a></p>
+@endforeach
 
 <hr>
 
 <h5 class="text-muted">AREA</h5>
-<p><a href="{{route('area.show', ['area' => 'zxcvbnm'])}}" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> Jakarta</a></p>
-<p><a href="{{route('area.show', ['area' => 'zxcvbnm'])}}" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> Bandung</a></p>
-<p><a href="{{route('area.show', ['area' => 'zxcvbnm'])}}" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> Bekasi</a></p>
+@foreach($areas as $area)
+	<p><a href="{{route('area.show', ['area' => $area->slug])}}" class="text-muted"><i class="fas fa-map-marked-alt text-success"></i> {{$area->name}}</a></p>
+@endforeach
 
 <hr>
 
 <h5 class="text-muted">KATEGORI</h5>
-<p><a href="{{route('category.show', ['category' => 'zxcvbnm'])}}" class="text-muted"><i class="fas fa-tag text-info"></i> Rumah Bekas</a></p>
-<p><a href="{{route('category.show', ['category' => 'zxcvbnm'])}}" class="text-muted"><i class="fas fa-tag text-info"></i> Cluster</a></p>
-<p><a href="{{route('category.show', ['category' => 'zxcvbnm'])}}" class="text-muted"><i class="fas fa-tag text-info"></i> Proyek Baru</a></p>
+@foreach($categories as $category)
+	<p><a href="{{route('category.show', ['category' => $category->slug])}}" class="text-muted"><i class="fas fa-tag text-info"></i> {{$category->name}}</a></p>
+@endforeach

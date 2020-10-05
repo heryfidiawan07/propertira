@@ -27,5 +27,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('setting', SettingController::class);
     Route::resource('user', UserController::class);
     Route::resource('role', RoleController::class);
+    Route::get('destroy-media-property/{id}', 'MediaController@destroyProperty')->name('media.destroyProperty');
 });
 

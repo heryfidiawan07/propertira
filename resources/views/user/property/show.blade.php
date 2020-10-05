@@ -22,16 +22,18 @@
 
         <div class="section-body">
 
+            <h2 class="section-title">{{$prop->title}}</h2>
+
             <div class="row">
                 <div class="col-md-8">
                     
                     <div id="carousel-thumb" class="carousel slide text-center bg-light" data-ride="carousel" style="height: 300px;">
                         <div class="carousel-inner">
-                            @for($i=0; $i<4; $i++)
-                                <div class="carousel-item  @if($i==0) active @endif">
-                                    <img src="https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/f36d6ef7fec519.jpg" class="img-fluid" style="height: 300px;">
+                            @foreach($prop->medias as $key => $media)
+                                <div class="carousel-item  @if($key==0) active @endif">
+                                    <img src="{{ asset('storage/property/img/'.$media->image) }}" class="img-fluid" style="height: 300px;">
                                 </div>
-                            @endfor
+                            @endforeach
                         </div>
                         <!--Controls-->
                         <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
@@ -44,56 +46,49 @@
                         </a>
                           <!--/.Controls-->
                     </div>
-                    <ol class="carousel-indicators carousel-indicators-custom mt-3 w-100 ml-0 bg-light">
-                        @for($i=0; $i<4; $i++)
-                            <li class="indicators-target @if($i==0) active @endif" data-target="#carousel-thumb" data-slide-to="{{$i}}">
-                                <img class="d-block w-100" src="https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/f36d6ef7fec519.jpg" class="img-fluid">
+                    <ol class="carousel-indicators carousel-indicators-custom mt-3 w-100 ml-0 bg-light pt-2">
+                        @foreach($prop->medias as $key => $media)
+                            <li class="indicators-target @if($key==0) active @endif" data-target="#carousel-thumb" data-slide-to="{{$key}}">
+                                <img class="d-block w-100" src="{{ asset('storage/property/thumb/'.$media->image) }}" class="img-fluid" height="50">
                             </li>
-                        @endfor
+                        @endforeach
                     </ol>
                     {{-- End Carousel --}}
 
-                    <div class="card p-3 mb-2 mt-3">
-                        <h5 class="text-success">Rp 100.000.000</h5>
+                    <div class="card p-3 mb-2">
+                        <h5 class="text-parent">
+                            <span class="font-italic text-warning" style="font-size: 12px;">{{$prop->price_text}}</span>
+                            Rp {{number_format($prop->price)}}
+                        </h5>
                         <div class="d-block text-info">
                             <i class="fas fa-map-marker-alt"></i>
-                            Jl Raya Serang Setu
+                            {{$prop->address}}
                         </div>
                     </div>
 
                     <div class="card p-3 mb-2">
                         <div class="d-inline">
-                            <a href="#" class="text-muted"><i class="fas fa-fire text-danger"></i> DP 0%</a>
-                            <a href="#" class="text-muted"><i class="fas fa-tag"></i> Cluster</a>
+                            @foreach($prop->promos as $promo)
+                                <a href="{{route('promo.show', ['promo' => $promo->slug])}}" class="text-muted"><i class="fas fa-fire text-danger"></i> {{$promo->name}}</a>
+                            @endforeach
+                            @foreach($prop->categories as $category)
+                                <a href="{{route('category.show', ['category' => $category->slug])}}" class="text-muted"><i class="fas fa-tag text-info"></i> {{$category->name}}</a>
+                            @endforeach
                         </div>
                     </div>
 
-                    <div class="card p-3 mb-2">
-                        <p>DETAILS</p>
-                        <table class="table table-hover">
-                            <tr>
-                                <td>Kamar tidur</td>
-                                <td>2</td>
-                                <td>Tipe</td>
-                                <td>30 * 60</td>
-                            </tr>
-                            <tr>
-                                <td>Luas Tanah</td>
-                                <td>2</td>
-                                <td>Lain</td>
-                                <td>30 * 60</td>
-                            </tr>
-                        </table>
-                    </div>
+                    @if($prop->update)
+                        <div class="card p-3 mb-2 card-primary">
+                            <h5>INFO UPDATE</h5>
+                            <hr>
+                            {!! $prop->update !!}
+                        </div>
+                    @endif
 
                     <div class="card p-3">
-                        <p>DESKRIPSI</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h5>DESKRIPSI</h5>
+                        <hr>
+                        {!! $prop->content !!}
                     </div>
 
                 </div>

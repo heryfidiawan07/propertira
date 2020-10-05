@@ -10,18 +10,26 @@ class Property extends Model
     use SoftDeletes;
     
     protected $fillable = [
-    	'title', 'slug', 'text_preview', 'address', 'content', 'view', 'user_id',
+    	'title', 'slug', 'preview', 'address', 'price_text', 'price', 'update', 'content', 'event', 'sticky', 'status', 'view', 'user_id',
     ];
 
-    public function user(){
+    public function user() {
     	return $this->belongsTo(User::class);
     }
-    
-    public function categories(){
-    	return $this->belongsToMany(Category::class);
+
+    public function promos() {
+        return $this->belongsToMany(Promo::class);
+    }
+
+    public function areas() {
+        return $this->belongsToMany(Area::class);
+    }
+
+    public function categories() {
+        return $this->belongsToMany(Category::class);
     }
     
-    public function media(){
+    public function medias() {
     	return $this->morphMany(Media::class, 'mediatable');
     }
     

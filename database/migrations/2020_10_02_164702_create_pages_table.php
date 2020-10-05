@@ -19,7 +19,8 @@ class CreatePagesTable extends Migration
             $table->string('slug')->unique();
             $table->string('preview');
             $table->text('content');
-            $table->bigInteger('view');
+            $table->string('status')->default('publish');
+            $table->bigInteger('view')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletesTz();

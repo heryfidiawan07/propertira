@@ -7,9 +7,10 @@
         <div class="section-body">
             <div class="row">
                 <div class="col-lg-8">
-                    @for ($i = 0; $i < 5; $i++)
+                    @foreach($property as $prop)
                         @include('partials.property-index')
-                    @endfor
+                    @endforeach
+                    {{$property->appends(request()->input())->links()}}
                 </div>
                 <div class="col-md-4">
                     @include('partials.search-sidebar')

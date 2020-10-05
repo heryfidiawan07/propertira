@@ -166,8 +166,9 @@ p, ul:not(.list-unstyled), ol {
 select.form-control:not([size]):not([multiple]),
 .form-control:not(.form-control-sm):not(.form-control-lg) {
   font-size: 14px;
-  padding: 10px 15px;
-  height: 42px; }
+  /*padding: 10px 15px;
+  height: 42px; */
+}
 
 textarea.form-control {
   height: 64px !important; }
@@ -188,14 +189,15 @@ select.form-control-sm {
 .custom-select,
 .custom-file-label:after,
 .form-control[type="color"],
-select.form-control:not([size]):not([multiple]) {
-  height: calc(2.25rem + 6px); }
+/*select.form-control:not([size]):not([multiple]) {
+  height: calc(2.25rem + 6px); }*/
 
 .form-control.creditcard {
   background-position: 98%;
   background-repeat: no-repeat;
-  background-size: 40px;
-  padding-right: 60px; }
+  /*background-size: 40px;
+  padding-right: 60px; */
+}
   .form-control.creditcard.visa {
     background-image: url("../img/visa.png"); }
   .form-control.creditcard.americanexpress {

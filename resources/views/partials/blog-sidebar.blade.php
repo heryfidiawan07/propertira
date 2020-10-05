@@ -1,17 +1,16 @@
 <h5 class="text-muted">BLOG</h5>
 <div class="row">
-    @for ($i = 0; $i < 5; $i++)
+    @foreach($blogs as $blog)
         <div class="col-5 mb-2">
-            <img src="https://static-id.lamudi.com/static/media/bm9uZS9ub25l/2x2x2x380x244/06e4e70ce93d47.jpg" class="img-fluid w-100">
+            <img src="{{ asset('storage/blog/thumb/'.$blog->image) }}" class="img-fluid w-100">
         </div>
         <div class="col-7 pl-0 mb-2">
-            <a href="{{route('blog.show', ['blog' => 'zxcvbnm'])}}">
-                <h6 class="p-0 m-0 font-weight-bold" style="font-size: 14px;">Title {{$i}}</h6>
+            <a href="{{route('blog.show', ['blog' => $blog->slug])}}">
+                <h6 class="p-0 m-0 font-weight-bold" style="font-size: 14px;">{{$blog->title}}</h6>
             </a>
             <div class="" style="height: 4.5em; overflow-y: hidden;">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                {{$blog->preview}}
             </div>
         </div>
-    @endfor
+    @endforeach
 </div>

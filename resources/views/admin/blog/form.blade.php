@@ -1,8 +1,6 @@
 @extends('layouts.admin.app')
 
 @push('css')
-{{-- <link rel="stylesheet" href="{{ asset('stisla/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
-<link rel="stylesheet" href="{{ asset('stisla/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}"> --}}
 <link rel="stylesheet" href="{{ asset('stisla/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 <link rel="stylesheet" href="{{ asset('dropify/dist/css/dropify.min.css') }}">
 @endpush
@@ -15,29 +13,69 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-body">
-                        <h5>CREATE BLOG</h5>
-                        <form method="POST" action="" enctype="multipart/form-data">
+                        <h5>@if($edit) EDIT @else CREATE @endif  BLOG</h5>
+                        <form method="POST" action="@if($edit){{route('blog.update', ['blog' => $blog->slug])}}@else{{route('blog.store')}}@endif" enctype="multipart/form-data">
                             @if($edit) @method('PUT') @endif
                             @csrf
+
                             <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" name="title" class="form-control form-control-sm">
+                                <label>Title <span class="text-danger">*</span></label>
+                                @error('title')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <input type="text" name="title" class="form-control form-control-sm" value="@if($edit){{$blog->title}}@else{{old('title')}}@endif">
                             </div>
                             <div class="form-group">
-                                <label>Text Preview</label>
-                                <textarea name="preview" class="form-control"></textarea>
+                                <label>Text Preview <span class="text-danger">*</span></label>
+                                @error('preview')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <textarea name="preview" class="form-control">@if($edit){{$blog->preview}}@else{{old('preview')}}@endif</textarea>
                             </div>
                             <div class="form-group">
-                                <label>Image</label>
-                                <input type="file" name="image" class="form-control dropify" data-height="250" value="" required>
+                                <label>Image <span class="text-danger">*</span></label>
+                                @error('image')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <input type="file" name="image" class="form-control dropify" data-height="250" value="" @if($edit) data-default-file="{{ asset('storage/blog/img/'.$blog->image) }}"@else required @endif>
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control description" style="min-height: 300px;"></textarea>
+                                <label>Content <span class="text-danger">*</span></label>
+                                @error('content')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <textarea name="content" class="form-control content">@if($edit){!! $blog->content !!}@else{!! old('content') !!}@endif</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="d-block">Sticky</label>
+                                <select name="sticky" class="form-control form-control-sm">
+                                    @if($edit)
+                                        @if($property->sticky == 1)
+                                            <option value="1">Sticky</option>
+                                        @endif
+                                    @endif
+                                    <option value="0">Normal</option>
+                                    <option value="1">Sticky</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label class="d-block">Tags</label>
-                                <input type="text" name="tag" class="form-control" value="@if($edit){{$news->tag}}@else{{old('tag')}}@endif" data-role="tagsinput" style="width:100%;">
+                                @error('tags')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <input type="text" name="tags" class="form-control" value="@if($edit){{$blog->tags}}@else{{old('tag')}}@endif" data-role="tagsinput" style="width:100%;">
+                            </div>
+                            <div class="form-group">
+                                <label class="d-block">Status</label>
+                                <select name="status" class="form-control form-control-sm">
+                                    @if($edit)
+                                        @if($blog->status == 'draft')
+                                            <option value="draft">Draft</option>
+                                        @endif
+                                    @endif
+                                    <option value="publish">Publish</option>
+                                    <option value="draft">Draft</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-sm px-3" value="Save">
@@ -55,15 +93,13 @@
 @endsection
 
 @push('js')
-{{-- <script src="{{ asset('stisla/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-<script src="{{ asset('stisla/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script> --}}
 <script src="{{ asset('stisla/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 <script src="{{ asset('dropify/dist/js/dropify.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.4.2/tinymce.min.js"></script>
 <script>
 var editor_config = {
     path_absolute : "/",
-    selector: ".description",
+    selector: ".content",
     plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
     imagetools_cors_hosts: ['picsum.photos'],
     menubar: 'file edit view insert format tools table help',
@@ -77,7 +113,7 @@ var editor_config = {
     image_advtab: true,
     template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
     template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
-    height: 600,
+    height: 500,
     image_caption: true,
     quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
     noneditable_noneditable_class: 'mceNonEditable',

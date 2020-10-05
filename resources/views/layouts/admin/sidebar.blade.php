@@ -13,8 +13,12 @@
                 <a class="nav-link" href="{{route('dashboard.index')}}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
             </li>
 
+            <li class="@if(Request::segment(2) == 'page') active @endif">
+                <a class="nav-link" href="{{route('page.index')}}"><i class="fas fa-columns"></i> <span>Page</span></a>
+            </li>
+
             <li class="@if(Request::segment(2) == 'property') active @endif">
-                <a class="nav-link" href="{{route('property.index')}}"><i class="fas fa-shopping-bag"></i> <span>Property</span></a>
+                <a class="nav-link" href="{{route('property.index')}}"><i class="fas fa-building"></i> <span>Property</span></a>
             </li>
 
             <li class="@if(Request::segment(2) == 'blog') active @endif">

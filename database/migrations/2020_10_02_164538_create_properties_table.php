@@ -19,8 +19,14 @@ class CreatePropertiesTable extends Migration
             $table->string('slug')->unique();
             $table->string('preview');
             $table->string('address');
+            $table->string('price_text')->nullable();
+            $table->string('price');
+            $table->text('update')->nullable();
             $table->text('content');
-            $table->bigInteger('view');
+            $table->dateTime('event')->nullable();
+            $table->tinyInteger('sticky')->default(0);
+            $table->string('status')->default('publish');
+            $table->bigInteger('view')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletesTz();

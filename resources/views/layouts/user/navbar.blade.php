@@ -7,15 +7,11 @@
                 <i class="fas fa-ellipsis-v"></i>
             </a>
             <ul class="navbar-nav">
-                <li class="nav-item @if(Request::segment(2) == 'slug') active @endif">
-                    <a href="{{route('page.show', ['page' => 'slug'])}}" class="nav-link">Page 1</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('page.show', ['page' => 'asdfghjkl'])}}" class="nav-link">Page 2</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('page.show', ['page' => 'asdfghjkl'])}}" class="nav-link">Page 3</a>
-                </li>
+                @foreach($pages as $page)
+                    <li class="nav-item @if(Request::segment(2) == $page->slug) active @endif">
+                        <a href="{{route('page.show', ['page' => $page->slug])}}" class="nav-link">{{$page->title}}</a>
+                    </li>
+                @endforeach
             </ul>
         </div>
 
