@@ -4,16 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Setting;
+use Illuminate\Support\Facades\Storage;
+
 class SettingController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.setting.index');
+    {   
+        $sett = Setting::first();
+        return view('admin.setting.index', compact('sett'));
     }
 
     /**
@@ -21,9 +30,38 @@ class SettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function icon(Request $request)
     {
-        //
+        $request->validate([
+                'icon' => 'required|mimes:jpeg,jpg,png,gif',
+            ]);
+
+        if ( $request->hasFile('icon') ) {
+            Storage::delete('public/icon/'.'icon.jpeg');
+        }
+        $request->file('icon')->storeAs('public/icon', 'icon.jpeg');
+        
+        return redirect()->route('setting.index')->with('message', 'Icon successfully updated');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function logo(Request $request)
+    {
+        $request->validate([
+                'logo' => 'required|mimes:jpeg,jpg,png,gif',
+            ]);
+
+        if ( $request->hasFile('logo') ) {
+            Storage::delete('public/logo/'.'logo.jpeg');
+        }
+        $request->file('logo')->storeAs('public/logo', 'logo.jpeg');
+        
+        return redirect()->route('setting.index')->with('message', 'Logo successfully updated');
     }
 
     /**
@@ -34,29 +72,29 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $request->validate([
+                'author' => 'required',
+                'name' => 'required',
+                'title' => 'required',
+                'description' => 'required',
+                'phone' => 'required',
+                'hp' => 'required',
+                'whatsapp' => 'required',
+                'company' => 'required',
+                'address' => 'required',
+            ]);
+        Setting::create([
+                'author' => $request->author,
+                'name' => $request->name,
+                'title' => $request->title,
+                'description' => $request->description,
+                'phone' => $request->phone,
+                'hp' => $request->hp,
+                'whatsapp' => $request->whatsapp,
+                'company' => $request->company,
+                'address' => $request->address,
+            ]);
+        return redirect()->route('setting.index')->with('message', 'Data successfully created');
     }
 
     /**
@@ -67,8 +105,30 @@ class SettingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        $request->validate([
+                'author' => 'required',
+                'name' => 'required',
+                'title' => 'required',
+                'description' => 'required',
+                'phone' => 'required',
+                'hp' => 'required',
+                'whatsapp' => 'required',
+                'company' => 'required',
+                'address' => 'required',
+            ]);
+        Setting::whereId($id)->update([
+                'author' => $request->author,
+                'name' => $request->name,
+                'title' => $request->title,
+                'description' => $request->description,
+                'phone' => $request->phone,
+                'hp' => $request->hp,
+                'whatsapp' => $request->whatsapp,
+                'company' => $request->company,
+                'address' => $request->address,
+            ]);
+        return redirect()->route('setting.index')->with('message', 'Data successfully updated');
     }
 
     /**

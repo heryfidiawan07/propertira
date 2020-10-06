@@ -1,5 +1,6 @@
 <div class="navbar-bg" style="height: 70px;"></div>
-    <nav class="navbar navbar-expand-lg main-navbar">
+
+<nav class="navbar navbar-expand-lg main-navbar">
         {{-- <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a> --}}
         
         <div class="nav-collapse">
@@ -108,33 +109,6 @@
                     <div class="dropdown-item-desc">
                         <b>You</b> and <b>Dedik Sugiharto</b> are now friends
                         <div class="time">10 Hours Ago</div>
-                    </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                    <div class="dropdown-item-icon bg-success text-white">
-                        <i class="fas fa-check"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
-                        <div class="time">12 Hours Ago</div>
-                    </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                    <div class="dropdown-item-icon bg-danger text-white">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        Low disk space. Let's clean it!
-                        <div class="time">17 Hours Ago</div>
-                    </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                    <div class="dropdown-item-icon bg-info text-white">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        Welcome to Stisla template!
-                        <div class="time">Yesterday</div>
                     </div>
                 </a>
             </div>

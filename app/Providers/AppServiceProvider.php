@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
             $slide_prop  = Property::where('status','publish')->has('promos')->latest()->take(5)->get();
             $event_prop  = Property::where('status','publish')->where('event','>=',date('Y-m-d H:i:s'))->latest()->take(5)->get();
             $sticky_prop = Property::where('status','publish')->where('sticky', 1)->latest()->take(3)->get();
-            $blogs       = Blog::where('status','publish')->latest()->take(5)->get();
+            $blogs       = Blog::where('status','publish')->where('sticky', 0)->latest()->take(3)->get();
             $sticky_blog = Blog::where('status','publish')->where('sticky', 1)->latest()->take(2)->get();
             View::share([
                 'pages'  => $pages,

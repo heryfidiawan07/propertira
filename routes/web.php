@@ -28,5 +28,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('user', UserController::class);
     Route::resource('role', RoleController::class);
     Route::get('destroy-media-property/{id}', 'MediaController@destroyProperty')->name('media.destroyProperty');
+    Route::post('setting/icon', 'SettingController@icon')->name('setting.icon');
+    Route::post('setting/logo', 'SettingController@logo')->name('setting.logo');
 });
 

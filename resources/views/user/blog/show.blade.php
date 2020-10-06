@@ -15,6 +15,10 @@
 						<img src="{{ asset('storage/blog/img/'.$blog->image) }}" class="w-100">
 						<hr>
 						{!! $blog->content !!}
+						<hr>
+						<div class="d-inline-block">
+						{!! str_replace(',', '</span><span class="bg-primary text-white px-2 py-1 w-25 mr-1">#', '<span class="bg-primary text-white px-2 py-1 w-25 mr-1">#'.$blog->tags.'</span>') !!}<br>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
