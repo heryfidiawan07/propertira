@@ -14,9 +14,9 @@
         </div>
         <div class="col-md-3 my-3">
             <h6 class="mb-3">KONTAK</h6>
-            <a href="" class="d-block font-weight-bold text-success"><i class="fab fa-whatsapp"></i> 0822 1317 3147</a>
-            <a href="" class="d-block mt-2 font-weight-bold text-primary"><i class="fas fa-phone"></i> 082213173147</a>
-            <a href="" class="d-block mt-2 font-weight-bold text-danger"><i class="fas fa-envelope"></i> heryfidiawan07@gmail.com</a>
+            {!! $setting != null ? '<a href="$setting->whatsapp_link" class="d-block font-weight-bold text-success"><i class="fab fa-whatsapp"></i> '.$setting->whatsapp.'</a>' : '' !!}
+            {!! $setting != null ? '<a href="tel:+62'.$setting->hp.'" class="d-block font-weight-bold text-primary"><i class="fas fa-phone"></i> '.$setting->hp.'</a>' : '' !!}
+            {!! $setting != null ? '<a href="mailto:'.$setting->email.'" class="d-block font-weight-bold text-danger"><i class="fas fa-envelope"></i> '.$setting->email.'</a>' : '' !!}
             <div class="mt-2">
                 <a href=""><i class="fab fa-facebook text-20"></i></a>
                 <a href=""><i class="fab fa-instagram text-20 ml-2"></i></a>

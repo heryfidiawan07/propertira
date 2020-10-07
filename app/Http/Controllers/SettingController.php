@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Share;
 use App\Setting;
+use App\SocialMedia;
 use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
@@ -21,8 +23,10 @@ class SettingController extends Controller
      */
     public function index()
     {   
+        $share = Share::all();
         $sett = Setting::first();
-        return view('admin.setting.index', compact('sett'));
+        $social = SocialMedia::all();
+        return view('admin.setting.index', compact('sett','social','share'));
     }
 
     /**
@@ -80,8 +84,10 @@ class SettingController extends Controller
                 'phone' => 'required',
                 'hp' => 'required',
                 'whatsapp' => 'required',
+                'whatsapp_link' => 'required',
                 'company' => 'required',
                 'address' => 'required',
+                'email' => 'required',
             ]);
         Setting::create([
                 'author' => $request->author,
@@ -90,7 +96,9 @@ class SettingController extends Controller
                 'description' => $request->description,
                 'phone' => $request->phone,
                 'hp' => $request->hp,
+                'email' => $request->email,
                 'whatsapp' => $request->whatsapp,
+                'whatsapp_link' => $request->whatsapp_link,
                 'company' => $request->company,
                 'address' => $request->address,
             ]);
@@ -114,8 +122,10 @@ class SettingController extends Controller
                 'phone' => 'required',
                 'hp' => 'required',
                 'whatsapp' => 'required',
+                'whatsapp_link' => 'required',
                 'company' => 'required',
                 'address' => 'required',
+                'email' => 'required',
             ]);
         Setting::whereId($id)->update([
                 'author' => $request->author,
@@ -124,7 +134,9 @@ class SettingController extends Controller
                 'description' => $request->description,
                 'phone' => $request->phone,
                 'hp' => $request->hp,
+                'email' => $request->email,
                 'whatsapp' => $request->whatsapp,
+                'whatsapp_link' => $request->whatsapp_link,
                 'company' => $request->company,
                 'address' => $request->address,
             ]);
@@ -137,8 +149,81 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+
+    public function socialMediaActivated() {
+        $class = ['fab fa-facebook','fab fa-twitter','fab fa-whatsapp','fas fa-envelope','fab fa-youtube','fab fa-line','fab fa-linkedin'];
+        $name  = ['facebook','twitter','whatsapp', 'envelope','youtube','line','linkedin'];
+        
+        $old = SocialMedia::onlyTrashed()->get();
+        if ($old->count()) {
+            SocialMedia::onlyTrashed()->restore();
+        }else {
+            foreach ($name as $key => $n) {
+                SocialMedia::create([
+                        'name' => $n,
+                        'class' => $class[$key],
+                    ]);
+            }
+        }
+        return redirect()->route('setting.index')->with('message', 'Data successfully activated');
     }
+    
+    public function socialMedia(Request $request)
+    {
+        $req = $request->all();
+        foreach ($req as $key => $url) {
+            SocialMedia::whereName($key)->update([
+                    'name' => $key,
+                    'url' => $url,
+                ]);
+        }
+        return redirect()->route('setting.index')->with('message', 'Data successfully updated');
+    }
+
+    public function shareActivated() {
+        $class = ['fab fa-facebook','fab fa-twitter','fab fa-whatsapp','fas fa-envelope','fab fa-google'];
+        $name  = ['facebook','twitter','whatsapp', 'envelope','google'];
+
+        $old = Share::onlyTrashed()->get();
+        if ($old->count()) {
+            Share::onlyTrashed()->restore();
+        }else {
+            foreach ($name as $key => $n) {
+                Share::create([
+                        'name' => $n,
+                        'class' => $class[$key],
+                    ]);
+            }
+        }
+        return redirect()->route('setting.index')->with('message', 'Data successfully activated');
+    }
+    
+    public function Share(Request $request)
+    {
+        $req = $request->all();
+        foreach ($req as $key => $url) {
+            Share::whereName($key)->update([
+                    'name' => $key,
+                    'url' => $url,
+                ]);
+        }
+        return redirect()->route('setting.index')->with('message', 'Data successfully updated');
+    }
+
+    public function softDeleteShare() {
+        $share = Share::all();
+        foreach ($share as $s) {
+            $s->delete();
+        }
+        return redirect()->route('setting.index')->with('message', 'Data successfully deleted');
+    }
+
+    public function softDeleteSocial() {
+        $social = SocialMedia::all();
+        foreach ($social as $s) {
+            $s->delete();
+        }
+        return redirect()->route('setting.index')->with('message', 'Data successfully deleted');
+    }
+
 }

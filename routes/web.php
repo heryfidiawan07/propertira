@@ -30,5 +30,12 @@ Route::prefix('admin')->group(function () {
     Route::get('destroy-media-property/{id}', 'MediaController@destroyProperty')->name('media.destroyProperty');
     Route::post('setting/icon', 'SettingController@icon')->name('setting.icon');
     Route::post('setting/logo', 'SettingController@logo')->name('setting.logo');
+    Route::post('socialMedia', 'SettingController@socialMedia')->name('setting.socialMedia');
+    Route::post('socialMediaActivated', 'SettingController@socialMediaActivated')->name('setting.socialMediaActivated');
+    Route::post('share', 'SettingController@share')->name('setting.share');
+    Route::post('shareActivated', 'SettingController@shareActivated')->name('setting.shareActivated');
+
+    Route::get('softDeleteSocial', 'SettingController@softDeleteSocial')->name('setting.softDeleteSocial');
+    Route::get('softDeleteShare', 'SettingController@softDeleteShare')->name('setting.softDeleteShare');
 });
 

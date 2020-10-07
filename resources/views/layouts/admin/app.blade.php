@@ -85,6 +85,12 @@
     <script src="{{ asset('mask/dist/jquery.mask.min.js') }}"></script>
     <script>
         $('.rupiah').mask("999.999.999.999", {reverse: true});
+        $('.hp').mask("+6299999999999", {"placeholder": "ex: +6282213173147"});
+        // $('.hp').on("keypress",function (evt) {
+        //     if (this.value.length == 3 && evt.which == 48 ) {
+        //         evt.preventDefault();
+        //     }
+        // });
     </script>
 
     <script>

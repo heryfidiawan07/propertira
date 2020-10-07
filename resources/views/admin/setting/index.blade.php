@@ -2,6 +2,44 @@
 
 @push('css')
 <link rel="stylesheet" href="{{ asset('dropify/dist/css/dropify.min.css') }}">
+<style>
+.frame-profil {
+    height: 150px;
+    /* max-height: 600px; */
+    width: 100%;
+    background-color: hsla(200,40%,30%,.4);
+    background-image:       
+        url('https://78.media.tumblr.com/cae86e76225a25b17332dfc9cf8b1121/tumblr_p7n8kqHMuD1uy4lhuo1_540.png'), 
+        url('https://78.media.tumblr.com/8cd0a12b7d9d5ba2c7d26f42c25de99f/tumblr_p7n8kqHMuD1uy4lhuo2_1280.png'),
+        url('https://78.media.tumblr.com/5ecb41b654f4e8878f59445b948ede50/tumblr_p7n8on19cV1uy4lhuo1_1280.png'),
+        url('https://78.media.tumblr.com/28bd9a2522fbf8981d680317ccbf4282/tumblr_p7n8kqHMuD1uy4lhuo3_1280.png');
+    background-repeat: repeat-x;
+    background-position: 
+        0 20%,
+        0 100%,
+        0 50%,
+        0 100%,
+        0 0;
+    background-size: 
+        2500px,
+        800px,
+        500px 200px,
+        1000px,
+        400px 260px;
+    animation: 50s para infinite linear;
+}
+
+@keyframes para {
+100% {
+    background-position: 
+        -5000px 20%,
+        -800px 95%,
+        500px 50%,
+        1000px 100%,
+        400px 0;
+    }
+}
+</style>
 @endpush
 
 @section('content')
@@ -34,9 +72,13 @@
                             <label class="form-control-label">{{ucFirst('phone')}}<span class="text-danger">*</span></label>
                             <input name="phone" class="form-control form-control-sm mb-3" value="{{$sett != null ? $sett->phone : old('phone')}}">
                             <label class="form-control-label">{{ucFirst('hp')}}<span class="text-danger">*</span></label>
-                            <input name="hp" class="form-control form-control-sm mb-3" value="{{$sett != null ? $sett->hp : old('hp')}}">
+                            <input name="hp" class="form-control form-control-sm mb-3 hp" value="{{$sett != null ? $sett->hp : old('hp')}}">
+                            <label class="form-control-label">{{ucFirst('email')}}<span class="text-danger">*</span></label>
+                            <input name="email" class="form-control form-control-sm mb-3" value="{{$sett != null ? $sett->email : old('email')}}">
                             <label class="form-control-label">{{ucFirst('whatsapp')}}<span class="text-danger">*</span></label>
                             <input name="whatsapp" class="form-control form-control-sm mb-3" value="{{$sett != null ? $sett->whatsapp : old('whatsapp')}}">
+                            <label class="form-control-label">{{ucFirst('whatsapp Link')}}<span class="text-danger">*</span></label>
+                            <input name="whatsapp_link" class="form-control form-control-sm mb-3" value="{{$sett != null ? $sett->whatsapp_link : old('whatsapp_link')}}">
                             <label class="form-control-label">{{ucFirst('company')}}<span class="text-danger">*</span></label>
                             <input name="company" class="form-control form-control-sm mb-3" value="{{$sett != null ? $sett->company : old('company')}}">
                             <label class="form-control-label">{{ucFirst('address')}}<span class="text-danger">*</span></label>
@@ -74,6 +116,7 @@
                         </div>
                         <div class="form-group">
                             <label>Profile <i>(pages view)</i></label>
+                            <div class="frame-profil"></div>
                         </div>
                     </div>
                 </div>
@@ -82,54 +125,30 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Social Media</h4>
+                        @if(! $social->count())
+                            <form method="POST" action="{{route('setting.socialMediaActivated')}}">
+                                @csrf
+                                <input type="submit" value="Activate Social Media" class="btn btn-sm btn-primary ml-auto">
+                            </form>
+                        @else
+                            <a href="{{route('setting.softDeleteSocial')}}" class="btn btn-warning btn-sm">Inactivate</a>
+                        @endif
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="">
-                            @csrf
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="facebook"><i class="fab fa-facebook"></i></span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" placeholder="Url" aria-describedby="facebook">
-                            </div>
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="twitter"><i class="fab fa-twitter"></i></span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" placeholder="Url" aria-describedby="twitter">
-                            </div>
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="whatsapp"><i class="fab fa-whatsapp"></i></span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" placeholder="Url" aria-describedby="whatsapp">
-                            </div>
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="envelope"><i class="fas fa-envelope"></i></span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" placeholder="Url" aria-describedby="envelope">
-                            </div>
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="youtube"><i class="fab fa-youtube"></i></span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" placeholder="Url" aria-describedby="youtube">
-                            </div>
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="line"><i class="fab fa-line"></i></span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" placeholder="Url" aria-describedby="line">
-                            </div>
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="linkedin"><i class="fab fa-linkedin"></i></span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" placeholder="Url" aria-describedby="linkedin">
-                            </div>
-                            <input type="submit" class="btn btn-primary btn-sm px-3" value="Save">
-                        </form>
+                        @if($social->count())
+                            <form method="POST" action="{{route('setting.socialMedia')}}">
+                                @csrf
+                                @foreach($social as $s)
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="{{$s->name}}"><i class="{{$s->class}}"></i></span>
+                                        </div>
+                                        <input name="{{$s->name}}" type="text" class="form-control form-control-sm" placeholder="Url" value="{{$s->url}}">
+                                    </div>
+                                @endforeach
+                                <input type="submit" class="btn btn-primary btn-sm px-3" value="Save">
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -137,33 +156,30 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Share</h4>
+                        @if(! $share->count())
+                            <form method="POST" action="{{route('setting.shareActivated')}}">
+                                @csrf
+                                <input type="submit" value="Activate Share" class="btn btn-sm btn-primary ml-auto">
+                            </form>
+                        @else
+                            <a href="{{route('setting.softDeleteShare')}}" class="btn btn-warning btn-sm">Inactivate</a>
+                        @endif
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="">
-                            @csrf
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input name="share[]" class="form-check-input" type="checkbox" id="facebook" value="">
-                                    <label class="form-check-label" for="facebook"><i class="fab fa-facebook"></i></label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input name="share[]" class="form-check-input" type="checkbox" id="twitter" value="">
-                                    <label class="form-check-label" for="twitter"><i class="fab fa-twitter"></i></label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input name="share[]" class="form-check-input" type="checkbox" id="whatsapp" value="">
-                                    <label class="form-check-label" for="whatsapp"><i class="fab fa-whatsapp"></i></label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input name="share[]" class="form-check-input" type="checkbox" id="envelope" value="">
-                                    <label class="form-check-label" for="envelope"><i class="fas fa-envelope"></i></label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input name="share[]" class="form-check-input" type="checkbox" id="google" value="">
-                                    <label class="form-check-label" for="google"><i class="fab fa-google"></i></label>
-                                </div>
-                            </div>
-                        </form>
+                        @if($share->count())
+                            <form method="POST" action="{{route('setting.share')}}">
+                                @csrf
+                                @foreach($share as $s)
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="{{$s->name}}"><i class="{{$s->class}}"></i></span>
+                                        </div>
+                                        <input name="{{$s->name}}" type="text" class="form-control form-control-sm" placeholder="Url" value="{{$s->url}}">
+                                    </div>
+                                @endforeach
+                                <input type="submit" class="btn btn-primary btn-sm px-3" value="Save">
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>
