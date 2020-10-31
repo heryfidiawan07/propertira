@@ -3,8 +3,7 @@
 @push('css')
 <style>
 .frame-profil {
-	height: 150px;
-	/* max-height: 600px; */
+	/*height: 150px;
 	width: 100%;
 	background-color: hsla(200,40%,30%,.4);
 	background-image:		
@@ -23,6 +22,28 @@
 		2500px,
 		800px,
 		500px 200px,
+		1000px,
+		400px 260px;
+	animation: 50s para infinite linear;*/
+	height: 250px;
+	width: 100%;
+	background-color: hsla(200,40%,30%,.4);
+	background-image:		
+		url('https://78.media.tumblr.com/cae86e76225a25b17332dfc9cf8b1121/tumblr_p7n8kqHMuD1uy4lhuo1_540.png'), 
+		/*url('https://78.media.tumblr.com/8cd0a12b7d9d5ba2c7d26f42c25de99f/tumblr_p7n8kqHMuD1uy4lhuo2_1280.png'),*/
+		url('https://www.worldofghibli.id/wp-content/uploads/2020/02/gambar-rumah-minimalis-2-lantai.jpg'),
+		url('https://78.media.tumblr.com/28bd9a2522fbf8981d680317ccbf4282/tumblr_p7n8kqHMuD1uy4lhuo3_1280.png');
+	background-repeat: repeat-x;
+	background-position: 
+		0 20%,
+		/*0 100%,*/
+		0 50%,
+		0 100%,
+		0 0;
+	background-size: 
+		2500px,
+		/*800px,*/
+		90% 100%,
 		1000px,
 		400px 260px;
 	animation: 50s para infinite linear;

@@ -14,24 +14,18 @@
         </div>
         <div class="col-md-3 my-3">
             <h6 class="mb-3">KONTAK</h6>
-            {!! $setting != null ? '<a href="$setting->whatsapp_link" class="d-block font-weight-bold text-success"><i class="fab fa-whatsapp"></i> '.$setting->whatsapp.'</a>' : '' !!}
+            {!! $setting != null ? '<a href="'.$setting->whatsapp_link.'" class="d-block font-weight-bold text-success"><i class="fab fa-whatsapp"></i> '.$setting->whatsapp.'</a>' : '' !!}
             {!! $setting != null ? '<a href="tel:+62'.$setting->hp.'" class="d-block font-weight-bold text-primary"><i class="fas fa-phone"></i> '.$setting->hp.'</a>' : '' !!}
             {!! $setting != null ? '<a href="mailto:'.$setting->email.'" class="d-block font-weight-bold text-danger"><i class="fas fa-envelope"></i> '.$setting->email.'</a>' : '' !!}
             <div class="mt-2">
-                <a href=""><i class="fab fa-facebook text-20"></i></a>
-                <a href=""><i class="fab fa-instagram text-20 ml-2"></i></a>
+                @foreach($social as $row)
+                    <a href="{{$row->url}}"><i class="{{$row->class}}"></i></a>
+                @endforeach
             </div>
         </div>
         <div class="col-md-4 my-3">
-            <h6 class="mb-3">TENTANG</h6>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            {!! $setting->title != null ? '<h6 class="mb-3">'.$setting->title.'</h6>' : '' !!}
+            {!! $setting->description != null ? '<p>'.$setting->description.'</p>' : '' !!}
         </div>
     </div>
     <hr>

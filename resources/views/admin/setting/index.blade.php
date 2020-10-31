@@ -4,26 +4,24 @@
 <link rel="stylesheet" href="{{ asset('dropify/dist/css/dropify.min.css') }}">
 <style>
 .frame-profil {
-    height: 150px;
-    /* max-height: 600px; */
+    height: 250px;
     width: 100%;
     background-color: hsla(200,40%,30%,.4);
     background-image:       
-        url('https://78.media.tumblr.com/cae86e76225a25b17332dfc9cf8b1121/tumblr_p7n8kqHMuD1uy4lhuo1_540.png'), 
-        url('https://78.media.tumblr.com/8cd0a12b7d9d5ba2c7d26f42c25de99f/tumblr_p7n8kqHMuD1uy4lhuo2_1280.png'),
-        url('https://78.media.tumblr.com/5ecb41b654f4e8878f59445b948ede50/tumblr_p7n8on19cV1uy4lhuo1_1280.png'),
-        url('https://78.media.tumblr.com/28bd9a2522fbf8981d680317ccbf4282/tumblr_p7n8kqHMuD1uy4lhuo3_1280.png');
+        url('{{asset('storage/profile/tree.png')}}'),
+        url('{{asset('storage/profile/profile.jpeg')}}');
+        /*url('https://78.media.tumblr.com/28bd9a2522fbf8981d680317ccbf4282/tumblr_p7n8kqHMuD1uy4lhuo3_1280.png');*/
     background-repeat: repeat-x;
     background-position: 
         0 20%,
-        0 100%,
+        /*0 100%,*/
         0 50%,
         0 100%,
         0 0;
     background-size: 
         2500px,
-        800px,
-        500px 200px,
+        /*800px,*/
+        90% 100%,
         1000px,
         400px 260px;
     animation: 50s para infinite linear;
@@ -116,7 +114,14 @@
                         </div>
                         <div class="form-group">
                             <label>Profile <i>(pages view)</i></label>
-                            <div class="frame-profil"></div>
+                            <div class="frame-profil mb-2"></div>
+                            <form action="{{route('setting.profile')}}" method="POST" id="form-profile" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" class="form-control profile" id="profile" name="profile" data-height="100" value="" data-default-file="{{ asset('storage/profile/profile.jpeg') }}" required>
+                                @error('profile')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -215,6 +220,16 @@ $('.logo').dropify({
         error:   'error'
     }
 });
+
+$('.profile').dropify({
+    messages: {
+        default: 'Drag or drop for choose image',
+        replace: 'change image',
+        remove:  'delete image',
+        error:   'error'
+    }
+});
+
 $(document).on('input', '#logo', function() {
     const logo = $('#logo').prop('files')[0];
     if (logo) {

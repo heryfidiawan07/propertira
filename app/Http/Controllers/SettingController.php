@@ -69,6 +69,26 @@ class SettingController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile(Request $request)
+    {
+        $request->validate([
+                'profile' => 'required|mimes:jpeg,jpg,png,gif',
+            ]);
+
+        if ( $request->hasFile('profile') ) {
+            Storage::delete('public/profile/'.'profile.jpeg');
+        }
+        $request->file('profile')->storeAs('public/profile', 'profile.jpeg');
+        
+        return redirect()->route('setting.index')->with('message', 'Profile successfully updated');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

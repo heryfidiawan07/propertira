@@ -18,6 +18,7 @@ class CreateSocialMediaTable extends Migration
             $table->string('name');
             $table->string('url')->nullable();
             $table->string('class')->nullable();
+            $table->string('color')->nullable();
             $table->timestamps();
             $table->softDeletesTz();
         });
