@@ -95,7 +95,7 @@
                 <div class="col-md-4">
                     <div class="card p-3 text-center">
                         <div class="text-center mb-2">
-                            <img src="{{ asset('stisla/img/avatar/avatar-1.png') }}" width="50" class="rounded-circle">
+                            <img src="{{ asset('storage/admin/admin.jpeg') }}" width="50" class="rounded-circle">
                         </div>
                         {!! $setting != null ? '<h5>'.$setting->author.'</h5>' : '' !!}
                         <div class="row">

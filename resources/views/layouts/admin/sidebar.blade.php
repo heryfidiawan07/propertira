@@ -25,6 +25,10 @@
                 <a class="nav-link" href="{{route('blog.index')}}"><i class="fas fa-newspaper"></i> <span>Blog</span></a>
             </li>
 
+            <li class="@if(Request::segment(2) == 'messages') active @endif">
+                <a class="nav-link" href="{{route('messages.index')}}"><i class="fas fa-envelope"></i> <span>Messages</span></a>
+            </li>
+
             <li class="dropdown @if(Request::segment(2) == 'promo' || Request::segment(2) == 'area' || Request::segment(2) == 'category')  active @endif">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-box"></i> <span>Partials</span></a>
                 <ul class="dropdown-menu">

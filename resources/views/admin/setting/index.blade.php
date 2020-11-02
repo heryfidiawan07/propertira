@@ -93,6 +93,16 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
+                            <label>Admin Profile</label>
+                            <form action="{{route('setting.admin')}}" method="POST" id="form-admin" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" class="form-control admin" id="admin" name="admin" data-height="100" value="" data-default-file="{{ asset('storage/admin/admin.jpeg') }}" required>
+                                @error('admin')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </form>
+                        </div>
+                        <div class="form-group">
                             <label>Icon</label>
                             <form action="{{route('setting.icon')}}" method="POST" id="form-icon" enctype="multipart/form-data">
                                 @csrf
@@ -222,6 +232,15 @@ $('.logo').dropify({
 });
 
 $('.profile').dropify({
+    messages: {
+        default: 'Drag or drop for choose image',
+        replace: 'change image',
+        remove:  'delete image',
+        error:   'error'
+    }
+});
+
+$('.admin').dropify({
     messages: {
         default: 'Drag or drop for choose image',
         replace: 'change image',

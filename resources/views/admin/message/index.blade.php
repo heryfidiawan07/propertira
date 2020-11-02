@@ -9,9 +9,6 @@
                 <h2 class="section-title">All {{ucfirst(Request::segment(2))}}</h2>
                 <p class="section-lead">This page is just an example for you to create your own page.</p>
             </div>
-            <div class="col">
-                <a href="{{route('blog.create')}}" class="btn btn-primary btn-sm float-right mt-5">Create Blog</a>
-            </div>
         </div>
 
         @include('partials.flash-message')
@@ -23,12 +20,11 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <td>Image</td>
-                                <td>Title</td>
-                                <td>View</td>
-                                <td>Status</td>
+                                <td>Name</td>
+                                <td>Phone</td>
+                                <td>Email</td>
                                 <td>Created</td>
-                                <td>Edit</td>
+                                <td>Show</td>
                                 <td>Delete</td>
                             </tr>
                         </thead>
@@ -39,6 +35,7 @@
 
     </div>
 </section>
+@include('admin.message.modal.show')
 @endsection
 
 @push('js')
@@ -46,28 +43,25 @@
 const table = $('#table').DataTable({
     processing: true,
     serverSide: true,
-    ajax: "{{route('blog.index')}}",
+    ajax: "{{route('messages.index')}}",
     columns: [
         {
             data: 'DT_RowIndex', name: 'id'
         },
         {
-            data: 'image', name: 'image'
+            data: 'name', name: 'name'
         },
         {
-            data: 'title', name: 'title'
+            data: 'phone', name: 'phone'
         },
         {
-            data: 'view', name: 'view'
-        },
-        {
-            data: 'status', name: 'status'
+            data: 'email', name: 'email'
         },
         {
             data: 'created_at', name: 'created_at'
         },
         {
-            data: 'edit', name: 'edit'
+            data: 'show', name: 'show'
         },
         {
             data: 'delete', name: 'delete'
@@ -84,6 +78,22 @@ const table = $('#table').DataTable({
         }
     ],
     // order: [[ 2, "desc" ]],
+});
+
+$(document).on('click', '.show', function(e) {
+    e.preventDefault();
+    $('#message-show').modal('show');
+    $.getJSON($(this).attr('href'), function(data) {
+        // console.log(data);
+        $('.message-title').text(data.subject);
+        $('.message-body').html(
+            '<p><i>From: </i>'+data.name+'<p>'+
+            '<p><i>Email: </i>'+data.email+'<p>'+
+            '<p><i>Phone: </i>'+data.phone+'<p>'+
+            '<p>'+data.created_at+'<p>'+
+            '<p>'+data.message+'</p>'
+        );
+    });
 });
 </script>
 @endpush

@@ -13,7 +13,7 @@ class Share extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'name', 'url', 'class',
+        'name', 'url', 'class', 'color',
     ];
     
 }

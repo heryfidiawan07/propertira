@@ -19,7 +19,7 @@
         <div class="row">
             <div class="card p-3 col-md-12">
                 <div class="table-responsive scrollbar-custom">
-                    <table class="table table-hover" id="table">
+                    <table class="table table-hover w-100" id="table">
                         <thead>
                             <tr>
                                 <th>No</th>

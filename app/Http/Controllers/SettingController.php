@@ -37,7 +37,7 @@ class SettingController extends Controller
     public function icon(Request $request)
     {
         $request->validate([
-                'icon' => 'required|mimes:jpeg,jpg,png,gif',
+                'icon' => 'required|mimes:jpeg,jpg,png,gif,png',
             ]);
 
         if ( $request->hasFile('icon') ) {
@@ -57,7 +57,7 @@ class SettingController extends Controller
     public function logo(Request $request)
     {
         $request->validate([
-                'logo' => 'required|mimes:jpeg,jpg,png,gif',
+                'logo' => 'required|mimes:jpeg,jpg,png,gif,png',
             ]);
 
         if ( $request->hasFile('logo') ) {
@@ -77,7 +77,7 @@ class SettingController extends Controller
     public function profile(Request $request)
     {
         $request->validate([
-                'profile' => 'required|mimes:jpeg,jpg,png,gif',
+                'profile' => 'required|mimes:jpeg,jpg,png,gif,png',
             ]);
 
         if ( $request->hasFile('profile') ) {
@@ -86,6 +86,20 @@ class SettingController extends Controller
         $request->file('profile')->storeAs('public/profile', 'profile.jpeg');
         
         return redirect()->route('setting.index')->with('message', 'Profile successfully updated');
+    }
+
+    public function admin(Request $request)
+    {
+        $request->validate([
+                'admin' => 'required|mimes:jpeg,jpg,png,gif,png',
+            ]);
+
+        if ( $request->hasFile('admin') ) {
+            Storage::delete('public/admin/'.'admin.jpeg');
+        }
+        $request->file('admin')->storeAs('public/admin', 'admin.jpeg');
+        
+        return redirect()->route('setting.index')->with('message', 'Admin profile successfully updated');
     }
 
     /**
