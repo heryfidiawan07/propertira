@@ -17,7 +17,7 @@
         </div>
         <div class="col-md-3 my-3">
             <h6 class="mb-3">KONTAK</h6>
-            {!! $setting->whatsapp_link != null ? '<a href="'.$setting->whatsapp_link.'" class="d-block font-weight-bold text-success"><i class="fab fa-whatsapp"></i> '.$setting->whatsapp.'</a>' : '' !!}
+            {!! $setting->whatsapp_link != null ? '<a href="'.$setting->whatsapp_link.Request::url().'" class="d-block font-weight-bold text-success"><i class="fab fa-whatsapp"></i> '.$setting->whatsapp.'</a>' : '' !!}
             {!! $setting->hp != null ? '<a href="tel:+62'.$setting->hp.'" class="d-block font-weight-bold text-primary"><i class="fas fa-phone"></i> '.$setting->hp.'</a>' : '' !!}
             {!! $setting->email != null ? '<a href="mailto:'.$setting->email.'" class="d-block font-weight-bold text-danger"><i class="fas fa-envelope"></i> '.$setting->email.'</a>' : '' !!}
             <div class="mt-2">

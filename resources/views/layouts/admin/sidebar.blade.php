@@ -52,7 +52,7 @@
                         <a class="nav-link" href="{{route('user.index')}}"><i class="fas fa-user-tie"></i> User</a>
                     </li>
                     <li class="@if(Request::segment(2) == 'role') active @endif">
-                        <a class="nav-link" href="{{route('role.index')}}"><i class="fas fa-user-cog"></i> Role</a>
+                        <a class="nav-link" href="{{route('role.index')}}"><i class="fas fa-shield-alt"></i> Role</a>
                     </li>
                 </ul>
             </li>

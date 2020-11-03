@@ -26,7 +26,7 @@
                                 <a href="{{route('property.show', ['property' => $prop->slug])}}" class="btn btn-info btn-sm">
                                     <i class="fas fa-info"></i> Lihat Info
                                 </a>
-                                {!! $setting->whatsapp_link != null ? '<a href="'.$setting->whatsapp_link.'" class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</a>' : '' !!}
+                                {!! $setting->whatsapp_link != null ? '<a href="'.$setting->whatsapp_link.$prop->title.'" class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</a>' : '' !!}
                                 <div class="d-inline float-right mr-2 mt-2">
                                     @foreach($prop->promos as $promo)
                                         <a href="{{route('promo.show', ['promo' => $promo->slug])}}" class="text-muted"><i class="fas fa-fire text-danger"></i> {{$promo->name}}</a>
