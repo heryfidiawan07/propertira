@@ -8,6 +8,8 @@ use Auth;
 use DataTables;
 
 use App\Role;
+use App\Menu;
+use App\Permission;
 
 class RoleController extends Controller
 {   
@@ -37,7 +39,8 @@ class RoleController extends Controller
     public function create()
     {
         $edit = false;
-        return view('admin.role.form', compact('edit'));
+        $menus = Menu::all();
+        return view('admin.role.form', compact('edit','menus'));
     }
 
     /**
@@ -50,10 +53,23 @@ class RoleController extends Controller
     {
         $request->validate([
                 'name' => 'required|max:50|unique:roles',
+                'menus' => 'required',
             ]);
-        Auth::user()->roles()->create([
+
+        $role = Auth::user()->roles()->create([
                 'name' => $request->name,
             ]);
+        
+        foreach ($request->menus as $key => $menu) {
+            $actions = $request->$menu;
+            foreach ($actions as $action) {
+                Permission::create([
+                        'role_id' => $role->id,
+                        'menu_id' => $menu,
+                        'action' => $action,
+                    ]);
+            }
+        }
         return redirect()->route('role.index')->with('message', 'Data successfully created');
     }
 
@@ -64,8 +80,9 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {   
+        $role = Role::find($id);
+        return $role->permissions()->get();
     }
 
     /**
@@ -76,9 +93,10 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $edit = true;
-        $role = Role::find($id);
-        return view('admin.role.form', compact('edit', 'role'));
+        $edit  = true;
+        $menus = Menu::all();
+        $role  = Role::find($id);
+        return view('admin.role.form', compact('edit', 'role', 'menus'));
     }
 
     /**
@@ -125,6 +143,9 @@ class RoleController extends Controller
 
         return DataTables::eloquent($model)
                 ->orderColumn('id', '-id $1')
+                ->editColumn("permission", function ($data) {
+                    return '<a href="'.route('role.show', ['role' => $data->id]).'" class="btn btn-info btn-sm btn-permission"><i class="fas fa-shield-alt"></i></a>';
+                })
                 ->editColumn("created_at", function ($data) {
                     return date("d-M-Y", strtotime($data->created_at));
                 })
@@ -135,7 +156,7 @@ class RoleController extends Controller
                     return '<a href="'.route('role.destroy', ['role' => $data->id]).'" data-title="'.$data->name.'" class="btn btn-danger btn-sm btn-delete"><i class="fas fa-trash"></i></a>';
                 })
                 ->addIndexColumn()
-                ->rawColumns(['status', 'edit', 'delete'])
+                ->rawColumns(['permission', 'edit', 'delete'])
                 ->make(true);
     }
 

@@ -37,6 +37,21 @@
 
     </div>
 </section>
+
+<div class="modal fade" id="permission-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="permission-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="permission-body">
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('js')
@@ -77,5 +92,27 @@ const table = $('#table').DataTable({
     ],
     // order: [[ 2, "desc" ]],
 });
+
+$(document).on('click', '.btn-permission', function(e) {
+    e.preventDefault();
+    $('#permission-modal').modal('show');
+    $('#permission-title').text('TESTING');
+    getPermission($(this).attr('href'));
+});
+
+function getPermission(url) {
+    $.getJSON(url, function(data) {
+        let menus = [];
+        let html  = [];
+        $.each(data, function(index,menu) {
+            if (menus.indexOf(menu.name) === -1) {
+                menus.push(menu.name);
+                html.push('<h5>'+menu.name+'</h5>');
+            }
+            html.push('<span class="text-info mr-2">'+menu.pivot.action+'</span>');
+        });
+        $('#permission-body').html(html);
+    });
+}
 </script>
 @endpush

@@ -1,3 +1,7 @@
+@foreach($share as $row)
+    <a href="{{$row->url}}" class="btn btn-light btn-sm"><i class="{{$row->class}}"></i></a>
+@endforeach
+
 <footer class="main-footer">
     <div class="row">
         <div class="col-md-5 my-3">
@@ -16,19 +20,24 @@
             </form>
         </div>
         <div class="col-md-3 my-3">
-            <h6 class="mb-3">KONTAK</h6>
-            {!! $setting->whatsapp_link != null ? '<a href="'.$setting->whatsapp_link.Request::url().'" class="d-block font-weight-bold text-success"><i class="fab fa-whatsapp"></i> '.$setting->whatsapp.'</a>' : '' !!}
-            {!! $setting->hp != null ? '<a href="tel:+62'.$setting->hp.'" class="d-block font-weight-bold text-primary"><i class="fas fa-phone"></i> '.$setting->hp.'</a>' : '' !!}
-            {!! $setting->email != null ? '<a href="mailto:'.$setting->email.'" class="d-block font-weight-bold text-danger"><i class="fas fa-envelope"></i> '.$setting->email.'</a>' : '' !!}
+            @if($setting)
+                <h6 class="mb-3">KONTAK</h6>
+                {!! $setting != null ? '<a href="'.$setting->whatsapp_link.Request::url().'" class="d-block font-weight-bold text-success"><i class="fab fa-whatsapp"></i> '.$setting->whatsapp.'</a>' : '' !!}
+                {!! $setting != null ? '<a href="tel:+62'.$setting->hp.'" class="d-block font-weight-bold text-primary"><i class="fas fa-phone"></i> '.$setting->hp.'</a>' : '' !!}
+                {!! $setting != null ? '<a href="mailto:'.$setting->email.'" class="d-block font-weight-bold text-danger"><i class="fas fa-envelope"></i> '.$setting->email.'</a>' : '' !!}
+            @endif
             <div class="mt-2">
-                @foreach($social as $row)
-                    <a href="{{$row->url}}"><i class="{{$row->class}}"></i></a>
-                @endforeach
+                @if(count($social))
+                    <span class="d-block">Follow us:</span>
+                    @foreach($social as $row)
+                        <a href="{{$row->url}}" class="btn btn-light btn-sm"><i class="{{$row->class}}"></i></a>
+                    @endforeach
+                @endif
             </div>
         </div>
         <div class="col-md-4 my-3">
-            {!! $setting->title != null ? '<h6 class="mb-3">'.$setting->title.'</h6>' : '' !!}
-            {!! $setting->description != null ? '<p>'.$setting->description.'</p>' : '' !!}
+            {!! $setting != null ? '<h6 class="mb-3">'.$setting->title.'</h6>' : '' !!}
+            {!! $setting != null ? '<p>'.$setting->description.'</p>' : '' !!}
         </div>
     </div>
     <hr>
@@ -36,6 +45,6 @@
         Copyright &copy; {{date('Y')}}
     </div>
     <div class="footer-right">
-        {!! $setting->title != null ? $setting->title : '' !!}
+        {!! $setting != null ? $setting->title : '' !!}
     </div>
 </footer>

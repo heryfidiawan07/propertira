@@ -52,9 +52,9 @@
                                         </h5>
                                         <div class="d-block">
                                             <a href="{{route('property.show', ['property' => $prop->slug])}}" class="btn btn-info btn-sm">
-                                                <i class="fas fa-info"></i> Lihat Info ==
+                                                <i class="fas fa-info"></i> Lihat Info
                                             </a>
-                                            {!! $setting->whatsapp_link != null ? '<a href="'.$setting->whatsapp_link.$prop->title.'" class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</a>' : '' !!}
+                                            {!! $setting->btnWhatsapp($prop->title) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                                             <a href="{{route('property.show', ['property' => $prop->slug])}}" class="btn btn-info btn-sm">
                                                 <i class="fas fa-info"></i> Lihat Info
                                             </a>
-                                            {!! $setting->whatsapp_link != null ? '<a href="'.$setting->whatsapp_link.$prop->title.'" class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i> Kirim Pesan</a>' : '' !!}
+                                            {!! $setting->btnWhatsapp($prop->title) !!}
                                         </div>
                                     </div>
                                 </div>

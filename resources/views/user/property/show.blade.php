@@ -99,8 +99,8 @@
                         </div>
                         {!! $setting != null ? '<h5>'.$setting->author.'</h5>' : '' !!}
                         <div class="row">
-                            {!! $setting != null ? '<a href="tel:+62'.$setting->hp.'" class="btn btn-primary btn-sm col ml-1 mr-1"><i class="fas fa-phone"></i> '.$setting->hp.'</a>' : '' !!}
-                            {!! $setting != null ? '<a href="'.$setting->whatsapp_link.'" class="btn btn-success btn-sm col ml-1 mr-1"><i class="fab fa-whatsapp"></i> Kirim Pesan</a>' : '' !!}
+                            {!! $setting->btnPhone($prop->title) !!}
+                            {!! $setting->btnWhatsapp($prop->title) !!}
                         </div>
                     </div>
 

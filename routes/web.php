@@ -13,7 +13,8 @@ Route::get('area/{slug}', 'AreaController@show')->name('area.show');
 Route::get('category/{slug}', 'CategoryController@show')->name('category.show');
 
 
-Auth::routes(['register' => false]);
+Auth::routes();
+// Auth::routes(['register' => false]);
 
 // ADMIN
 Route::prefix('admin')->group(function () {

@@ -12,4 +12,9 @@ class Role extends Model
     protected $fillable = [
         'name', 'user_id',
     ];
+
+    public function permissions() {
+    	return $this->belongsToMany(Menu::class, 'permissions')->withPivot('action');;
+    }
+
 }
